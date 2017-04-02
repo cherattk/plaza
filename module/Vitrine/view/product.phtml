@@ -1,0 +1,315 @@
+   
+<!-- container -->
+<div class="container">
+
+    <!-- Shop Page -->
+    <div id="page" class="page">
+
+        <!-- SHOP BANNER --> 
+        <div class="banner">
+
+            <!-- SHOP INFORMATION -->  
+            <div class="baninfo">
+
+                <!-- ABOUT SHOP  -->
+                <div class="contact">
+
+                    <!--bookmark-->
+                    <div class="bookmark blue-button">Ajouter aux favoris</div>
+
+                    <!-- SOCIAL MEDIA -->
+                    <div class="socialmedia">
+                        <label class="block-arrow right-arrow">Partager</label>
+                        <span class="fb"></span>
+                        <span class="google"></span>
+                        <span class="twitter"></span>
+                        <span class="pint"></span>
+                    </div>
+
+                    <!-- SHOP LOGO -->
+                    <div class="shoplogo">                
+                        <?php if($this->shop['logo']):?>
+                            <img src="<?php echo  $this->imagePath . '/shop/' . $this->shop['logo']; ?>"/>
+                        <?php else: ?>
+                            <img src="<?php echo $this->imagePath . '/img/shop_logo.png'; ?>"/>
+                        <?php endif ?>     
+                    </div>
+
+                    <!-- SHOP NAME -->
+                    <h1 class="shopname">
+                        <a href="<?php echo $this->shop['link']; ?>">
+                            <span class="icon-home"></span>
+                           <?php echo $this->shop['name']; ?>
+                        </a>
+                    </h1>
+
+                    <!-- SHOP INFORMATION -->
+                    <div id="about" class="aboutpage">
+
+                        <!-- Shop Catalogue -->
+                        <?php if ($this->shop['catalogue']) : ?>
+                            <input id="getshopmenu" type="radio" name="aboutshop" value="about-1"/>
+                            <label for="getshopmenu">Catalogue</label>
+                        <?php endif ?>
+
+                        <!--get About-->
+                        <input id="getcontact" type="radio" name="aboutshop" value="about-2"/>
+                        <label for="getcontact">Nous Joindre</label>
+
+                        <!-- chat
+                        <input id="getchat" type="radio" name="aboutshop" value="about-3"/>
+                        <label for="getchat">Chat</label>
+                        -->
+                        <div id="about-div" class="about-content">
+                            <span id="closeabout" class="close">x</span>
+
+                            <?php if ($this->shop['catalogue']) :?>
+                            <!-- catalogue -->
+                            <div id="about-1">
+                                <ul class="menu-catalogue">
+                                    <?php foreach($this->shop['catalogue'] as $ctg):?>
+                                        <li><a href="#"> <?php echo $ctg ?></a></li>
+                                    <?php endforeach;?>
+                                </ul>                            
+                            </div>
+                            <?php endif?>
+
+                            <!-- contact -->
+                        <div id="about-2" class="contact-info">
+                            <div class="contact-form">   
+                                <form id="contact-form">			
+                                    <label>Nom</label>
+                                    <input type="text" class="txt" name="vstname"/>
+
+                                    <label>Telephone</label>
+                                    <input type='text' class="txt" name="vstphone"/>
+
+                                    <label>Courriel</label>
+                                    <input type="text" class="txt" name="vstmail"/>
+
+                                    <label>Message</label>                    
+                                    <textarea class="txt" cols="50" rows="10" name="vstmessage" value=""></textarea>			
+
+                                    <!--send form-->
+                                    <div class="sendform">
+                                        <input type="submit" value="Envoyer" 
+                                               name="submit" class="bt blue-button"/>
+
+                                        <div class="formload">
+                                            <span class="icon-load"></span>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="contact-adrs">
+                                <p>134 rue machin, ville</p>
+                                <p>Montreal, Quebec, Canada</p>
+                                <p>Telephone : (123) - 456-789</p>
+                                <p>Fax : (123) - 456-789</p>       
+                            </div>
+
+                        </div>
+
+                        <!--
+                        <div id="about-3">
+                            <h1> chat widget </h1>
+                        </div>
+                        -->
+                        </div>
+
+                        <!-- ABOUT SCRIPT --> 
+                        <script type="text/javascript">
+                        (function($){    
+                            var old = null,
+                                closeButton = document.getElementById('closeabout'),
+                                aboutDiv = document.getElementById('about-div'),
+                                close = function(){
+                                    if(old){
+                                        document.getElementById(old.value).style.display = 'none';
+                                        old.checked = false;
+                                        old = null;
+                                    }
+
+                                    aboutDiv.style.display = 'none';
+
+                                };
+                            $('#about').children('input[type="radio"]').each(
+
+                                function(){
+                                    this.onchange = function(){
+
+                                        close();
+                                        var divContent = document.getElementById(this.value);
+                                            divContent.style.display = 'block';                                
+                                        old = this; 
+                                        aboutDiv.style.display = 'block';
+                                    };
+                                }
+                            );
+
+                            closeButton.onclick = close;
+
+                        })(jQuery);
+
+                        </script>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- FICHE PRODUIT -->
+        <div class="fiche">
+
+        <!-- left -->
+        <div class="fleft">
+
+        <!-- Product Image-->
+        <div class="prodimage">
+
+            <!-- central image -->
+            <div class="bigimg">
+                <img id="bigimg" src="<?php echo $this->imagePath . "/item/" . $this->item['image'][0] ; ?>"/>
+            </div>
+
+            <!-- product thumbnails --> 
+            <div id="thumbliste" class="thumbliste">
+
+                <?php foreach($this->item['image'] as $img): ?>
+                    <div><span></span>                    
+                        <img src="<?php echo $this->imagePath . "/item/" . $img ; ?>"/>
+                    </div>
+                <?php endforeach ?> 
+
+            </div>
+        </div>
+
+
+
+        <!-- product details -->
+        <div id="fichedata" class="fiche-data">
+
+            <label>Description</label>
+            <div class="item-details">
+                <p>
+                    <?php echo $this->item['description'];?>
+                </p>
+            </div>
+
+            <label>Commentaires</label>
+            <div class="item-cmt">
+                <span class="add-cmt">Ecrire un commentaire</span>
+                <ul>
+                    <li>
+
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        </div><!-- fin fiche left -->
+
+        <!-- right -->
+        <div class="fright">
+            <h1 class="name">
+                <?php echo $this->item['name'];?>
+            </h1>
+            <span class="price">
+                <?php echo '$' . $this->item['price'];?>
+            </span>
+
+            <!-- VOTE  -->
+            <div class="rating">
+                <span class="icon star-empty"></span>
+                <span class="icon star-empty"></span>
+                <span class="icon star-empty"></span>
+                <span class="icon star-empty"></span>
+                <span class="icon star-empty"></span>
+                <label>Evaluer ce produit</label>
+            </div>
+
+        <!-- basket -->
+        <div class="basket">
+
+            <!--Basket Form--> 
+            <form id="basketform">
+                <input type="hidden" 
+                       value="<?php echo $this->item['id'];?>" name="item"/>
+
+                <!--product option-->
+                <ul>
+                    <li>
+                        <label>Quantit&eacute;</label>
+                        <input type="text" class="txt" name="quantity" value="1"/>
+                    </li>
+                </ul>
+
+                <div class="addtobasket">                
+                    <input type="submit" class="checkout" value="Ajouter au panier"/>
+                    <span class="icon-basket"></span>
+                </div>
+            </form>                    
+        </div>
+
+        <!-- sale conditions -->
+        <ul class="salemode">
+
+            <!-- payment mode-->
+            <li><h3>Paiements Acceptés</h3>
+                <div class="payment">
+                    <span class="icon-paypal"></span>
+                    <span class="icon-visa"></span>
+                    <span class="icon-mastercart"></span>
+                    <span class="icon-amex"></span>
+                    <span class="icon-discover"></span>
+                </div>
+            </li>
+
+            <!-- shipping -->	
+            <li><h3>Livraison</h3>
+            <table class="shipmode">
+                    <colgroup>
+                      <col style="width:70%"/>
+                      <col style="width:30%"/>
+                    </colgroup>
+                      <tr>
+                          <th>Destination</th><th>Frais</th>
+                      </tr>
+                      <tr>
+                          <td>Montréal</td><td>$2,00</td>
+                      </tr>
+                      <tr>							
+                          <td>Hors Montréal</td><td>$4,00</td>
+                      </tr>
+                </table>
+            </li>
+
+            <!-- return policy 
+            <li><h3>Conditions de Vente</h3>
+                <div>
+                    <p>
+                      On sait depuis longtemps que travailler avec du texte lisible 
+                      et contenant du sens est source de distractions,
+                      et empêche de se concentrer sur la mise en page elle-même.
+                      L'avantage du Lorem Ipsum sur un texte générique comme 'Du texte.
+                      Du texte. Du texte.' est qu'il possède une distribution 
+                     de lettres plus ou moins normale, et en tout cas comparable 
+                     avec celle du français standard.
+                    </p>
+                </div>
+            </li>
+            -->
+        </ul>
+        </div>
+
+        </div>
+
+        <div class="grid">
+            <h2>Produits Similaires</h2>
+        </div>
+    </div>
+
+</div>

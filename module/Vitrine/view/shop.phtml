@@ -1,0 +1,206 @@
+<div class="big-banner"></div>
+
+<!-- CONTAINER -->
+<div class="container">
+
+<!-- SHOP PAGE -->
+<div id="page" class="page">
+
+    <!-- SHOP BANNER --> 
+    <div class="banner"> 
+
+        <div class="banimg">
+            <?php if($this->shop['banner']):?>
+                <img src="<?php echo  $this->imagePath . "/shop/" . $this->shop['banner']; ?>"/>
+            <?php else: ?>
+                <img src="<?php echo '/img/shop_banner.png'; ?>"/>
+            <?php endif ?>
+        </div>
+
+        <!-- Carousel 
+        <div class="carousel-nav">
+
+            <span id="prev-img" class="icon-nav-left"></span>
+            <span id="next-img" class="icon-nav-right"></span>
+
+            <div class="banimg">
+               <img src=""/>
+            </div>
+        </div>
+        -->
+        <!-- SHOP INFORMATION -->  
+    <div class="baninfo">
+
+    <!-- ABOUT SHOP  -->
+    <div class="contact">
+
+        <!--bookmark-->
+        <div class="bookmark blue-button">Ajouter aux favoris</div>
+
+        <!-- SOCIAL MEDIA -->
+        <div class="socialmedia">
+            <label class="block-arrow right-arrow">Partager</label>
+            <span class="fb"></span>
+            <span class="google"></span>
+            <span class="twitter"></span>
+            <span class="pint"></span>
+        </div>
+
+        <!-- SHOP LOGO -->
+        <div class="shoplogo">                
+            <?php if($this->shop['logo']):?>
+                <img src="<?php echo  $this->imagePath . "/shop/" .$this->shop['logo']; ?>"/>
+            <?php else: ?>
+                <img src="<?php echo '/img/shop_logo.png'; ?>"/>
+            <?php endif ?>     
+        </div>
+
+        <!-- SHOP NAME -->
+        <h1 class="shopname">
+            <a href="<?php echo $this->shop['link']; ?>">
+                <span class="icon-home"></span>
+               <?php echo $this->shop['name']; ?>
+            </a>
+        </h1>                    
+
+        <!-- SHOP INFORMATION -->
+        <div id="about" class="aboutpage">
+
+            <!-- Shop Catalogue -->
+            <?php if ($this->shop['catalogue']) :?>
+                <input id="getshopmenu" type="radio" name="aboutshop" value="about-1"/>
+                <label for="getshopmenu">Catalogue</label>
+            <?php endif?>
+
+            <!--get About-->
+            <input id="getcontact" type="radio" name="aboutshop" value="about-2"/>
+            <label for="getcontact">Nous Joindre</label>
+            
+            <div id="about-div" class="about-content">
+                <span id="closeabout" class="close">x</span>
+
+                <?php if ($this->shop['catalogue']) :?>
+                <!-- catalogue -->
+                <div id="about-1">
+                    <ul class="menu-catalogue">
+                        <?php foreach($this->shop['catalogue'] as $ctg):?>
+                            <li><a href="#"> <?php echo $ctg ?></a></li>
+                        <?php endforeach;?>
+                    </ul>                            
+                </div>
+                <?php endif?>
+
+                <!-- contact -->
+                <div id="about-2" class="contact-info">
+                    <div class="contact-form">   
+                        <form id="contact-form">			
+                            <label>Nom</label>
+                            <input type="text" class="txt" name="vstname"/>
+
+                            <label>Telephone</label>
+                            <input type='text' class="txt" name="vstphone"/>
+
+                            <label>Courriel</label>
+                            <input type="text" class="txt" name="vstmail"/>
+
+                            <label>Message</label>                    
+                            <textarea class="txt" cols="50" rows="10" name="vstmessage" value=""></textarea>			
+
+                            <!--send form-->
+                            <div class="sendform">
+                                <input type="submit" value="Envoyer" 
+                                       name="submit" class="bt blue-button"/>
+
+                                <div class="formload">
+                                    <span class="icon-load"></span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="contact-adrs">
+                        <p>134 rue machin, ville</p>
+                        <p>Montreal, Quebec, Canada</p>
+                        <p>Telephone : (123) - 456-789</p>
+                        <p>Fax : (123) - 456-789</p>       
+                    </div>
+
+                </div>
+
+                <!--
+                <div id="about-3">
+                    <h1> chat widget </h1>
+                </div>
+                -->
+            </div>
+
+            <!-- ABOUT SCRIPT --> 
+            <script type="text/javascript">
+            (function($){    
+                var old = null,
+                    closeButton = document.getElementById('closeabout'),
+                    aboutDiv = document.getElementById('about-div'),
+                    close = function(){
+                        if(old){
+                            document.getElementById(old.value).style.display = 'none';
+                            old.checked = false;
+                            old = null;
+                        }
+
+                        aboutDiv.style.display = 'none';
+
+                    };
+                $('#about').children('input[type="radio"]').each(
+
+                    function(){
+                        this.onchange = function(){
+
+                            close();
+                            var divContent = document.getElementById(this.value);
+                                divContent.style.display = 'block';                                
+                            old = this; 
+                            aboutDiv.style.display = 'block';
+                        };
+                    }
+                );
+
+                closeButton.onclick = close;
+
+            })(jQuery);
+
+            </script>
+        </div>
+    </div>
+
+    </div>
+
+    </div>
+
+    <!--  products list -->
+    <div id="grid" class="grid">
+
+        <div class="gridhead">
+            <h2>Vedettes</h2>
+            <hr/>
+        </div>
+
+        <div class="prodlist">            
+            <?php foreach ($this->items as $item): ?>
+                <div class="cellgrid">
+                    <a href="<?php echo $item['link'] ?>">
+                    <div class="imgdiv">
+                        <img src="<?php echo $this->imagePath . "/item/" . $item['img'] ?>"/>
+                    </div>
+                    <h4><?php echo $item['name'] ?></h4>
+                    <p>$<?php echo $item['price'] ?></p>
+                    </a>
+                </div>
+            <?php endforeach;?>            
+        </div>
+
+    </div>
+
+
+</div>    
+</div>
+    

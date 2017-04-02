@@ -1,0 +1,217 @@
+.container{
+    padding-bottom:80px;
+}
+.gridhead{
+	position:relative;
+	padding:0 30px;
+	text-align:center;
+}
+.gridhead h2{
+	font-size:1.7em;
+	background: #fff;
+	padding:10px 25px;
+	margin:0;
+	position:relative;
+	z-index:10;
+	display:inline-block;
+	color: #54829E;
+	border: 0px solid #E9F1F9;
+	border-top:0;
+	border-bottom:0;
+}
+.gridhead hr{
+	border:0;
+	height: 3px;
+	background: #E0EAF5;
+	position:relative;
+	top:-32px;
+}
+.big-banner{
+	height:400px;
+	background: #DFE9F9;
+	position:absolute;
+	top:66px;
+	left:0;
+	width:100%;
+	z-index:0;
+	border-bottom:1px solid #fff;
+}
+.page{
+	margin-top:40px;
+	position:relative;
+	z-index:10;
+	background:#fff;	
+	border:1px solid #D9D9DC;
+}
+.content{
+	padding:0 20px;
+}
+.content > div{
+	margin-bottom:30px;
+}
+.home-banner{
+	margin: 0 0 0px 0;
+	background:#fff;	
+	borde:1px solid #D9D9DC;
+}
+.banner{
+	margin:auto;
+	position:relative;
+	padding:10px;
+	background:#fff;
+}
+.banimg{
+	text-align:left;
+	width:100%;
+	height:326px;
+	/* background:url(../../all/img/welcome-banner-4.jpg) no-repeat center center #fff; */
+}
+.banimg img{ display : block;}
+
+.sub-banner{
+	padding:10px 20px 30px 20px;
+	displa:none;
+}
+.sub-banner h1{
+	font-size:1.5em;
+	background: #2ad266;
+	padding:20px 10px;
+	margin:0;
+	border: 1px solid #2eb960;
+	color: #ffffff;
+}
+.sub-banner > div{
+	display:inline-block;
+	vertical-align:top;
+	width:100px;
+	height:75px;
+	padding:5px;
+	border: 1px solid #e5e5e5;
+	margin:0 10px;
+	background:#fff;
+	display:none;
+}
+/*********************/
+.shoplist{
+	display:none;
+}
+.shopcard{
+    display:inline-block;
+    vertical-align:top;
+    width:250px;
+    padding:0;
+    border: 1px solid #D3D9DC;
+    background: #fff;
+    margin:20px 30px;
+}
+.shopcard > div{
+    padding:8px;
+}
+.shopcard h3{
+    border-bottom:0px solid #eee;
+    padding:15px 0;
+    margin:0;
+    color: #3E637B;
+}
+.shopcard p{
+    margin:0;
+    padding: 15px 0;
+    font-weight:bold;
+    color:#777;
+    font-size:0.9em;
+    font-style:italic;
+    text-transform:capitalize;
+    display:none;
+}
+.shopcard .shop-url{
+    display:block;
+    padding:10px;
+    background:#4C87FC;
+    backgroun: #4a82e8;
+    color:#fff;
+    font-weight:bold;
+}
+.shopcard .shop-url:hover{
+    background:#2B6FF7;
+}
+
+/********* product grid ********/
+.grid{
+	position:relative;
+	text-align:left;
+}
+/**/
+.cellgrid{
+	display:inline-block;
+	vertical-align:top;
+	width:170px;
+	margin:0 20px 20px 20px;
+	padding:8px;
+	overflow:hidden;
+	text-align:center;
+	position:relative;
+	color: #414446;
+	border:1px solid #fff;
+}
+.cellgrid:hover{
+	border-color:#ccc;
+	box-shadow: 0 0 10px #cfcfcf;
+}
+.cellgrid .imgdiv{
+	width:100%;
+	height:170px;	
+	margin:0;
+	position:relative;
+	overflow:hidden;
+}
+.cellgrid h4{
+    margin:0;
+    padding:10px 0;
+    font-weight:normal;
+    text-transform:capitalize;
+    font-size:14px;
+}
+.cellgrid p{
+    margin:0;
+    padding:5px 0;
+    font-weight:bold;
+    font-size:16px;
+    text-align:center;
+    background:#EEF2F9;
+    color: #416882;
+}
+.cellgrid span.sold-price{
+	color: #f7744b;
+	margin-left:10px;
+	font-size:12px;
+	line-height:1.5;
+	text-decoration:line-through;
+}
+
+/************ shop card 2 ***********/
+.shopgrid{
+    border: 1px solid #DBDBDE;
+    background: #E9F1F9;
+    margin-bottom:50px;
+    text-align:center;
+    padding:40px 30px;
+    display:none;
+}
+.shopgrid h2{
+	display:none;
+	margin:0 0 30px 0;
+	background: #E9F1F9;
+	padding:20px;
+}
+.shopcard-2 , .shoplist-2{
+	display:inline-block;
+	vertical-align:top;
+	border:1px solid #ccc;
+}
+.shopcard-2{
+	width:200px;
+}
+.prodlist-2{
+	width:70%;
+	height:200px;
+}

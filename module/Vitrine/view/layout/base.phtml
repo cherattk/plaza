@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link href='https://fonts.googleapis.com/css?family=Archivo+Narrow:400,700' rel='stylesheet' type='text/css'>
+
+<link rel="stylesheet" type="text/css"
+    href="/all/css/icon.css"/>
+
+<link rel="stylesheet" type="text/css"
+    href="/all/css/frame.css"/>
+
+<?php echo $this->headLink(); ?>
+
+
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+        crossorigin="anonymous"></script>
+
+<?php echo $this->headScript(); ?>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="headbar">
+
+    <div class="header">
+
+        <!-- LOGO -->
+        <h1 class="logo">
+            <a href="/">LOGO</a>
+        </h1>
+
+        <!--info link-->
+        <div class="headlink">
+           <a href="#">&#192; propos</a>
+           <a href="#">Aide</a>
+        </div>
+
+    </div>
+</div>
+
+    <?php echo $this->content; ?>
+
+
+<!-- FOOTER -->
+<div class="footer">
+    <ul>
+        <li>&#169;2014&#160;Boutique</li>
+        <li>About Boutique</li>
+        <li>Vendre</li>
+        <li>Acheter</li>
+        <li>Conditions d'utilisation</li>
+    </ul>
+</div>
+
+<!-- MODAL BOX -->
+<div id="div-filter">
+    <div id="filter"></div>
+
+    <!--login box-->
+    <div id="logindiv" class="modalbox" style="display:none">
+
+        <span class="close" onclick="closeBox.call(this);">x</span>
+
+        <!--login-->
+        <div id="loginbox" class="loginform">
+
+            <span class="changebox"
+                  onclick="changeBox.call(this,'signinbox');">Créer un Compte</span>
+
+            <h1>Connection</h1>
+
+           <form id="loginform" onsubmit="return false;">
+
+            <label>Utilisateur</label>
+            <input type="text" class="txt"/>
+
+            <label>Mot de passe</label>
+            <input type="text" class="txt"/>
+
+            <!--send form-->
+            <div class="sendform">
+                <input type="submit" value="Se Connecter"
+                       name="submit" class="bt blue-button"/>
+
+                <div class="formload">
+                    <span class="icon-load"></span>
+                </div>
+            </div>
+            </form>
+
+
+        </div>
+
+        <!--sign in-->
+        <div id="signinbox" class="loginform" style="display:none">
+            <!--<span class="close" onclick="closeBox.call(this);">x</span>-->
+
+            <span class="changebox"
+                  onclick="changeBox.call(this,'loginbox');">J'ai un Compte</span>
+
+            <h1>S'inscrire</h1>
+
+           <form id="signinform" onsubmit="return false;">
+
+            <label>Courriel</label>
+            <input type="text" class="txt"/>
+
+            <label>Créer un Mot de passe</label>
+            <input type="text" class="txt"/>
+
+            <!--send form-->
+            <div class="sendform">
+                <input type="submit" value="S'inscrire"
+                       name="submit" class="bt blue-button"/>
+
+                <div class="formload">
+                    <span class="icon-load"></span>
+                </div>
+            </div>
+            </form>
+
+        </div>
+
+        <!--
+        <script type="text/javascript" src="../../all/js/login.js"></script>
+
+        <script type="text/javascript">
+            function changeBox(divId){
+                this.parentNode.style.display = 'none';
+                document.getElementById(divId).style.display = 'block';
+            }
+            function closeBox(){
+                this.parentNode.style.display = 'none';
+                document.getElementById('div-filter').style.display = 'none';
+
+                var collect = this.parentNode.getElementsByClassName('badmsg');
+
+                for (var i = 0, max = collect.length; i < max; i++) {
+                    collect[i].style.display = "none";
+                }
+            }
+
+            document.getElementById('getlogform').onclick = function(){
+                document.getElementById('div-filter').style.display = 'block';
+                document.getElementById('logindiv').style.display = 'block';
+                document.getElementById('loginbox').style.display = 'block';
+                document.getElementById('signinbox').style.display = 'none';
+            };
+
+        </script>
+        -->
+    </div>
+
+</div>
+
+
+<!--<script type="text/javascript" src="visitor/js/catalogue.js"> </script>-->
+
+    <!-- script
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.slick/1.5.7/slick.min.js"></script>
+
+
+    <script type="text/javascript">
+
+    // slick plugin
+    $(document).ready(function(){
+
+        // setting
+        var prevSpan = document.getElementById('prev-img'),
+            nextSpan = document.getElementById('next-img');
+
+        $('.banimg').slick({
+            prevArrow: prevSpan,
+            nextArrow : nextSpan
+        });
+
+    });
+
+    </script>
+    -->
+
+
+</body>
+</html>

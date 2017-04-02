@@ -1,0 +1,114 @@
+<div class="big-banner"></div>
+
+<!-- welcome -->
+<div class="container">
+
+    <div class="page">
+        
+    <div class="home-banner">
+        <!-- carousel -->
+        <div class="banner carousel-nav">
+            
+            <span id="prev-img" class="icon-nav-left"></span>
+            <span id="next-img" class="icon-nav-right"></span>
+            
+            <div class="banimg">   
+                <img src="<?php echo $this->imagePath . '/shop/promo-banner.jpg'; ?>"/>
+                <img src="<?php echo $this->imagePath . '/shop/orange-banner.jpg'; ?>"/>
+            </div>
+        </div> <!-- carousel -->
+        
+        <div class="sub-banner">
+            <h1>
+            WHITE SALE! UP TO 50% OFF SELECTED ITEMS, INCLUDING BED, BATH & WINDOW BASICS
+            </h1>            
+        </div>
+    </div>
+    
+    <div class="content">
+        <div class="shoplist">
+           <div class="gridhead">
+                <h2>Boutiques Vedettes</h2>
+                <hr/>
+            </div>
+        </div>
+    
+        <div class="shopgrid">
+            <div class="gridhead">
+                <h2>Boutique Vedettes</h2>
+                <hr/>
+            </div>
+            <div class="shopcard-2">
+                <div class="shopcard-img">
+                <img src="<?php echo $this->imagePath . '/shop/logo-3.jpg'; ?>">
+                </div>
+                <h3>MyShopName</h3>
+                <p>Informatique</p>
+                <a href="/shop" class="shop-url">Visite Store</a>
+
+            </div>
+            <div class="prodlist-2"></div>
+        </div>
+        
+        <!--  -->
+        <div class="grid">
+            <div class="gridhead">
+                <h2>Nouveauté</h2>
+                <hr/>
+            </div>
+            <div class="prodlist">            
+                <?php foreach ($this->items as $item): ?>
+                    <div class="cellgrid">
+                        <a href="<?php echo $item['link'] ?>">
+                        <div class="imgdiv">
+                            <img src="<?php echo $this->imagePath . "/item/" .$item['img'] ?>"/>
+                        </div>
+                        <h4><?php echo $item['name'] ?></h4>
+                        <p>$<?php echo $item['price'] ?></p>
+                        </a>
+                    </div>
+                <?php endforeach;?>            
+            </div>        
+        </div>
+    
+        <div class="grid">
+            <div class="gridhead">
+                <h2>Populaires</h2>
+                <hr/>
+            </div>
+            <div class="prodlist">
+                <?php foreach ($this->items as $item): ?>
+                    <div class="cellgrid">
+                        <a href="<?php echo $item['link'] ?>">
+                        <div class="imgdiv">
+                            <img src="<?php echo $this->imagePath . "/item/" . $item['img'] ?>"/>
+                        </div>
+                        <h4><?php echo $item['name'] ?></h4>
+                        <p>$<?php echo $item['price'] ?></p>
+                        </a>
+                    </div>
+                <?php endforeach;?>
+            </div>
+        </div>
+    
+    </div><!-- content -->
+    </div><!-- page -->
+
+    <script type="text/javascript">
+
+        // slick plugin
+        $(document).ready(function(){
+
+            // setting
+            var prevSpan = document.getElementById('prev-img'),
+                nextSpan = document.getElementById('next-img');
+
+            $('.banimg').slick({
+                prevArrow: prevSpan,
+                nextArrow : nextSpan
+            });
+
+        });
+
+    </script>
+</div>
