@@ -95,6 +95,19 @@ ul{
 	text-decoration:underline;
 }
 
+.login{
+    padding:9px 20px;
+    display: inline-block;
+    margin-top:15px;
+    border-radius:3px;
+    cursor:pointer;
+    background: #4784f5;
+    color: #fff;
+}
+.login:hover{
+	background: #467ad8;
+}
+
 /*** FOOT ***/
 .footer{
     height:200px;
@@ -192,7 +205,7 @@ ul{
     outline:transparent solid 0;
 }
 .txt:focus{
-	border-color: #ABC7F1;
+	border-color:#3f7df9;
 	background:#fff;
 }
 /* submit button */
@@ -403,12 +416,12 @@ span.close:hover{
 }
 .carousel-nav .icon-nav-left{
     left:20px;
-    background:url('/all/img/prev-arrow.png') no-repeat 4px center white;
+    background:url('/any/img/prev-arrow.png') no-repeat 4px center white;
 	border-radius:2px;
 }
 .carousel-nav .icon-nav-right{
     right:20px;
-    background:url('/all/img/next-arrow.png') no-repeat 6px center white;
+    background:url('/any/img/next-arrow.png') no-repeat 6px center white;
 	border-radius:2px;
 }
 

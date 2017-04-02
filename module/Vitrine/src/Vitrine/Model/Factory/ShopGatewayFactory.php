@@ -19,7 +19,7 @@ class ShopGatewayFactory
         $resultPrototype = new ResultSet();
         $resultPrototype->setArrayObjectPrototype(new ShopEntity());
         
-        $tableGateway = new TableGateway(self::TAB_NAME, $dbAdapter, null, $resultPrototype);
+        $tableGateway = new TableGateway(self::$TAB_NAME, $dbAdapter, null, $resultPrototype);
         return new ShopGateway($tableGateway);
     }
 }
