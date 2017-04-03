@@ -13,7 +13,7 @@
             <?php if($this->shop['banner']):?>
                 <img src="<?php echo  $this->imagePath . "/shop/" . $this->shop['banner']; ?>"/>
             <?php else: ?>
-                <img src="<?php echo '/img/shop_banner.png'; ?>"/>
+                <img src="<?php echo '/any/img/shop_banner.png'; ?>"/>
             <?php endif ?>
         </div>
 
@@ -34,8 +34,14 @@
     <!-- ABOUT SHOP  -->
     <div class="contact">
 
-        <!--bookmark-->
-        <div class="bookmark blue-button">Ajouter aux favoris</div>
+        <?php  if($this->layout()->isConnected) :  ?>
+            <!--bookmark-->
+            <div class="bookmark blue-button">Ajouter aux favoris</div>
+        <?php else : ?>
+            <div class="bookmark blue-button">Not Connected</div>
+        <?php endif ?>
+                
+        
 
         <!-- SOCIAL MEDIA -->
         <div class="socialmedia">
@@ -49,9 +55,9 @@
         <!-- SHOP LOGO -->
         <div class="shoplogo">                
             <?php if($this->shop['logo']):?>
-                <img src="<?php echo  $this->imagePath . "/shop/" .$this->shop['logo']; ?>"/>
+                <img src="<?php echo  $this->shop['logo']; ?>"/>
             <?php else: ?>
-                <img src="<?php echo '/img/shop_logo.png'; ?>"/>
+                <img src="<?php echo '/any/img/shop_logo.png'; ?>"/>
             <?php endif ?>     
         </div>
 
@@ -189,7 +195,8 @@
                 <div class="cellgrid">
                     <a href="<?php echo $item['link'] ?>">
                     <div class="imgdiv">
-                        <img src="<?php echo $this->imagePath . "/item/" . $item['img'] ?>"/>
+                        <!--<img src="<?php echo $this->imagePath . "/item/" . $item['img'] ?>"/>-->
+                        <img src="<?php echo "/any/img/product-image.png" ?>"/>
                     </div>
                     <h4><?php echo $item['name'] ?></h4>
                     <p>$<?php echo $item['price'] ?></p>

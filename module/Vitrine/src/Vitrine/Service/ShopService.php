@@ -7,6 +7,8 @@ use Vitrine\Model\Gateway\ShopGateway;
 
 class ShopService implements ShopInterface
 {    
+    private $imagePath = '/imagehost/shop';
+            
     private $shopGateway;
     
     public function __construct(ShopGateway $shopGateway)
@@ -22,8 +24,8 @@ class ShopService implements ShopInterface
         $shop = [
             'name' => 'My Shop',
             'link' => '/shop/1234',
-            'banner' => 'bois-banner.jpg',
-            'logo' => 'logo-2.jpg',
+            'banner' => '', // use default banner
+            'logo' => '', // use default banner 
             'catalogue' => ['categorie-1' , 'categorie-2' , 'categorie-3'],
             
         ];

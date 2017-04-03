@@ -29,9 +29,9 @@
                     <!-- SHOP LOGO -->
                     <div class="shoplogo">                
                         <?php if($this->shop['logo']):?>
-                            <img src="<?php echo  $this->imagePath . '/shop/' . $this->shop['logo']; ?>"/>
+                            <img src="<?php echo  $this->shop['logo']; ?>"/>
                         <?php else: ?>
-                            <img src="<?php echo $this->imagePath . '/img/shop_logo.png'; ?>"/>
+                            <img src="<?php echo '/any/img/shop_logo.png'; ?>"/>
                         <?php endif ?>     
                     </div>
 
@@ -171,7 +171,7 @@
 
             <!-- central image -->
             <div class="bigimg">
-                <img id="bigimg" src="<?php echo $this->imagePath . "/item/" . $this->item['image'][0] ; ?>"/>
+                <img id="bigimg" src="<?php echo $this->item['image'][0] ; ?>"/>
             </div>
 
             <!-- product thumbnails --> 
@@ -179,7 +179,7 @@
 
                 <?php foreach($this->item['image'] as $img): ?>
                     <div><span></span>                    
-                        <img src="<?php echo $this->imagePath . "/item/" . $img ; ?>"/>
+                        <img src="<?php echo $img ; ?>"/>
                     </div>
                 <?php endforeach ?> 
 

@@ -17,9 +17,7 @@ use Vitrine\Service\ShopService;
 use Vitrine\Service\ProductService;
 
 class VitrineController extends AbstractActionController
-{
-    private $imagePath = '/imagehost';
-    
+{    
     private $cssPath = '/vitrine/css';
     
     private $jsPath = '/vitrine/js';
@@ -27,6 +25,8 @@ class VitrineController extends AbstractActionController
     private $ShopService ;
     
     private $ProductService ;
+    
+    private $authCookie = null;
     
     /////////////////////////////////////////////////////////////////////
     
@@ -37,6 +37,22 @@ class VitrineController extends AbstractActionController
     {
             $this->ShopService = $ShopService;
             $this->ProductService = $ProductService;
+    }
+    
+    public function onDispatch(\Zend\Mvc\MvcEvent $e)
+    {       
+        $this->authCookie = 'hi im cookie';
+        
+        return parent::onDispatch($e);
+    }
+    /////////////////////////////////////////////////////////////////////
+    
+    public function testAction()
+    {
+        $data = '';
+        return new ViewModel([
+            'data' => $data
+        ]);
     }
     
     /////////////////////////////////////////////////////////////////////
@@ -83,14 +99,7 @@ class VitrineController extends AbstractActionController
     public function getProductService()
     {
         return $this->ProductService;
-    }
-    
-    public function testAction()
-    {
-        return new ViewModel([
-            'data' => 'test'
-        ]);
-    }
+    }    
     
     /////////////////////////////////////////////////////////////////////
     
@@ -104,18 +113,14 @@ class VitrineController extends AbstractActionController
         $this->appendHeadScript(['https://cdn.jsdelivr.net/jquery.slick/1.5.7/slick.min.js']);
         
         
-        $productService = $this->getProductService();
-        
-        $itemList = $productService->getList();
+        $itemList = $this->getProductService()->getList();
         
         return new ViewModel([
-                'items'     => $itemList,
-                'imagePath' => $this->imagePath
+                'items'     => $itemList
         ]);
         
     }
     
-
     /////////////////////////////////////////////////////////////////////
     
     public function productAction()
@@ -123,18 +128,14 @@ class VitrineController extends AbstractActionController
         $this->appendCss(['shop.css' , 'product.css']);
         
         $shopid = 1234;
-        $shopService = $this->getShopService();        
-        $shop = $shopService->getShop($shopid);
+        $shop = $this->getShopService()->getShop($shopid);
         
         $itemId = 1234;
-        $productService = $this->getProductService();
-        $item = $productService->getProduct($itemId);
-        
+        $item = $this->getProductService()->getProduct($itemId);
         
         return new ViewModel([
             'shop' => $shop,
-            'item' => $item,
-            'imagePath' => $this->imagePath
+            'item' => $item
         ]);
     }
     
@@ -152,18 +153,13 @@ class VitrineController extends AbstractActionController
         ]);
         
         $shopId = 1234;
-        $shopService = $this->getShopService();        
-        $shop = $shopService->getShop($shopId);
+        $shop = $this->getShopService()->getShop($shopId);
         
-        
-        $productService = $this->getProductService();
-        
-        $itemList = $productService->getList();
+        $itemList = $this->getProductService()->getList();
         
         return new ViewModel( [
             'shop'      => $shop,
-            'items'     => $itemList,
-            'imagePath' => $this->imagePath
+            'items'     => $itemList
         ]);
     }
 }

@@ -3,6 +3,16 @@
 return array(
     'router' => array(
         'routes' => array(
+            'test' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route'    => '/test',
+                    'defaults' => array(
+                        'controller' => 'Vitrine\Controller\Vitrine',
+                        'action'     => 'test',
+                    ),
+                ),
+            ),
             'home' => array(
                 'type' => 'Literal',
                 'options' => array(
@@ -83,7 +93,7 @@ return array(
             'vitrine/vitrine/welcome'      => __DIR__ . '/../view/welcome.phtml',
             'vitrine/vitrine/shop'      => __DIR__ . '/../view/shop.phtml',
             'vitrine/vitrine/product'      => __DIR__ . '/../view/product.phtml',
-            'vitrine/vitrine/test'      => __DIR__ . '/../view/test.phtml',
+            'vitrine/vitrine/test'      => __DIR__ . '/../view/test/test.phtml',
             
         ),
         'template_path_stack' => array(

@@ -7,6 +7,8 @@ use Vitrine\Model\Gateway\ProductGateway;
 
 class ProductService implements ProductInterface
 {    
+    private $imagePath = '/imagehost/item';
+    
     private $productGateway;
     
     public function __construct(ProductGateway $productGateway)
@@ -26,10 +28,10 @@ class ProductService implements ProductInterface
         $items = [];
         for ( $i = 1 ; $i < 9 ; $i++ ){
             $items[$i] = [];
-            $items[$i]['name'] = "product name";
+            $items[$i]['name'] = "Short product name";
             $items[$i]['link'] = "/item/" . $productId;
             $items[$i]['price'] = 10.5;
-            $items[$i]['img'] = "/prod-" . $i . ".jpg" ;
+            $items[$i]['img'] = '/any/img/product-image.png';
         }
         
         return $items;
@@ -46,14 +48,15 @@ class ProductService implements ProductInterface
             'id' => $id,
             'name' => 'product name',
             'price' => "12.5",
-            'image' => [
-                'prod-1.jpg' , 'prod-2.jpg','prod-3.jpg',
-                'prod-4.jpg' , 'prod-5.jpg','prod-6.jpg',
-            ],
+            'image' => [],
             'description' => 'item description'
             
         ];
         
+        for ($i = 1 ; $i < 7 ; $i++){
+            
+            $item['image'][] = '/any/img/product-image.png';
+        }
         return $item;
     }
 }

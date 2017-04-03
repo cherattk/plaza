@@ -1,0 +1,102 @@
+<!-- MODAL BOX -->
+<div id="div-filter">
+    <div id="filter"></div>
+
+    <!--login box-->
+    <div id="logindiv" class="modalbox" style="display:none">
+
+        <span class="close" onclick="closeBox.call(this);">x</span>
+
+        <!--login-->
+        <div id="loginbox" class="loginform">
+
+            <span class="changebox"
+                  onclick="changeBox.call(this,'signinbox');">Créer un Compte</span>
+
+            <h1>Connection</h1>
+
+           <form id="loginform" onsubmit="return false;">
+
+            <label>Utilisateur</label>
+            <input type="text" class="txt"/>
+
+            <label>Mot de passe</label>
+            <input type="text" class="txt"/>
+
+            <!--send form-->
+            <div class="sendform">
+                <input type="submit" value="Se Connecter"
+                       name="submit" class="bt blue-button"/>
+
+                <div class="formload">
+                    <span class="icon-load"></span>
+                </div>
+            </div>
+            </form>
+
+
+        </div>
+
+        <!--sign in-->
+        <div id="signinbox" class="loginform" style="display:none">
+            <!--<span class="close" onclick="closeBox.call(this);">x</span>-->
+
+            <span class="changebox"
+                  onclick="changeBox.call(this,'loginbox');">J'ai un Compte</span>
+
+            <h1>S'inscrire</h1>
+
+           <form id="signinform" onsubmit="return false;">
+
+            <label>Courriel</label>
+            <input type="text" class="txt"/>
+
+            <label>Mot de passe</label>
+            <input type="text" class="txt"/>
+            
+            <label>Confirmer le mot de passe</label>
+            <input type="text" class="txt"/>
+
+            <!--send form-->
+            <div class="sendform">
+                <input type="submit" value="S'inscrire"
+                       name="submit" class="bt blue-button"/>
+
+                <div class="formload">
+                    <span class="icon-load"></span>
+                </div>
+            </div>
+            </form>
+
+        </div>
+
+        <!--  -->
+        <script type="text/javascript">
+            function changeBox(divId){
+                this.parentNode.style.display = 'none';
+                document.getElementById(divId).style.display = 'block';
+            }
+            function closeBox(){
+                this.parentNode.style.display = 'none';
+                document.getElementById('div-filter').style.display = 'none';
+
+                var collect = this.parentNode.getElementsByClassName('badmsg');
+
+                for (var i = 0, max = collect.length; i < max; i++) {
+                    collect[i].style.display = "none";
+                }
+            }
+
+            /**/
+            document.getElementById('getlogform').onclick = function(){
+                document.getElementById('div-filter').style.display = 'block';
+                document.getElementById('logindiv').style.display = 'block';
+                document.getElementById('loginbox').style.display = 'block';
+                document.getElementById('signinbox').style.display = 'none';
+            };
+            
+        </script>
+       
+    </div>
+
+</div>
