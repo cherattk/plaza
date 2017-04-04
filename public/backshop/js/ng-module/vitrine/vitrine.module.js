@@ -2,7 +2,7 @@ var vitrine = angular.module('vitrineModule',[]);
     
     vitrine.component('vitrineBanner', {
 
-        templateUrl : "/ng-module/vitrine/vitrine.html",
+        templateUrl : "/backshop/js/ng-module/vitrine/vitrine.html",
         controller: function(){
 
             this.configSelectFile = {

@@ -91,7 +91,7 @@
 
         <div>
             <div id="item-thumblist" class="thumblist">
-                <div ng-repeat="img in $ctrl.item.image">
+                <div ng-repeat="img in $ctrl.item.image track by $index">
                     <div class="thumb">
                         <img ng-src="{{img}}"/>
                     <label>

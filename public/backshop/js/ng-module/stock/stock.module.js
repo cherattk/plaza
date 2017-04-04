@@ -15,7 +15,7 @@ var stock = angular.module('stockModule',[]);
 
     stock.component('stockList', {
 
-        templateUrl : "/ng-module/stock/stock-list.html",
+        templateUrl : "/backshop/js/ng-module/stock/stock-list.html",
         controller:[ '$rootScope' , '$scope' , function($rootScope , $scope){
 
             this.openStockEditor = function() {
@@ -35,7 +35,7 @@ var stock = angular.module('stockModule',[]);
 
                 };
 
-                t.image = "/imagehost/item/prod-"+ i +".jpg";
+                t.image = "/any/img/product-image.png";
                 this.items.push(t);
             }
         }]
@@ -43,7 +43,7 @@ var stock = angular.module('stockModule',[]);
 
     stock.component('stockEditor',{
 
-        templateUrl : "/ng-module/stock/stock-editor.html",
+        templateUrl : "/backshop/js/ng-module/stock/stock-editor.html",
         controller: [ '$rootScope' , '$scope' , function($rootScope , $scope){
 
             this.closeStockEditor = function() {
@@ -63,7 +63,8 @@ var stock = angular.module('stockModule',[]);
             };
 
             for (var i = 0 ; i < 6 ; i++) {
-                this.item.image[i] = "/imagehost/item/prod-"+ (i+1) +".jpg";
+                this.item.image[i] = "/any/img/product-image.png";
+                
             }
         }]
     });

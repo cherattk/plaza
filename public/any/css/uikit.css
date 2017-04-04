@@ -63,7 +63,7 @@ ul{
 }
 .close{
     float:right;
-    margin:-7px -15px 0 0;
+    margin:0;
     padding:7px 10px;
 	font-size:14px;
     background:#fff;	
@@ -106,7 +106,7 @@ ul{
 }
 .bt{
     margin:0 10px 0 0;    
-    padding:8px 20px;
+    padding:10px 20px;
     font-size:14px;
     font-family:Arial,Helvetica,sans-serif;
     outline:transparent solid 0;
@@ -114,7 +114,7 @@ ul{
     border:1px solid #bbb;
     box-shadow:0 1px 0 #E5E5E5;	
     background:#eaeaea;
-	border-radius:3px;
+    border-radius:2px;
 }
 .bt:active{
     box-shadow:none;
@@ -129,13 +129,11 @@ textarea{
     font-size:16px;
     padding:8px 5px;
     margin:0 0 20px 0;
-    border:1px solid #BEC6DA;
+    border: 2px solid #c7d1ec;
     outline:transparent solid 0;
-    box-shado:1px 1px 1px #e5e5e5 inset,0 -1px 1px #e5e5e5 inset;
-    border-radiu:3px;
 }
 .txt:focus{
-	border-color: #76ACFD;
+	border-color: #87a2d8;
 	background:#fff;
 	box-shadow:none;
 }
@@ -144,18 +142,16 @@ textarea{
     background: #54CA54;
     color:#fff;
     text-shadow:0 0 1px #333;
-    box-shadow: 0 1px 0 #59D459 inset;
     cursor:pointer;
 }
 .save:hover{
 	background: #50C350;
 }
 .blue-button{
-	background: #2375A9;
+	background: #1e8bd0;
 	border: 1px solid transparent;
 	color:#fff;
 	cursor:pointer;
-	box-shadow: 0 1px 0 #428AB7 inset;
 }
 .blue-button:hover{
 	 background: #2C729E;

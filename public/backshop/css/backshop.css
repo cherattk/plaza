@@ -38,8 +38,9 @@ ul{
     border:0;
 }
 .h1{
-	font-size:24px;
+	font-size:22px;
 	color: #367298;
+	text-transform:uppercase;
 }
 .app-menu{
     width:200px;

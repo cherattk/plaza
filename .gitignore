@@ -4,7 +4,7 @@
 /config/
 /module/Vitrine/test/
 /public/dev/
-/public/imagehost/
+/public/imagehost
 /public/index.php
 /public/.htaccess
 /init_autoloader.php

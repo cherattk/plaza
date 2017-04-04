@@ -28,19 +28,20 @@
 	margin: 10px;
 	background: #fff;
 	color:#3E637B;
-	border:1px solid #ccc;
+	border:1px dotted #bbb;
+	border-radius:3px;
 }
 .modulenav label:hover{
-	background: #E0E7F9;
+	background: #eee;
 }
 .modulenav label:active{
 	border-color: #F0F3FB;
 	box-shadow:none;
 }
 .modulenav input:checked + label{
-	background: #2375A9;
+	background: #299ee8;
 	color:#fff;
-	border-color: #2375A9;
+	border-color:transparent;
 }
 .icon-stock{
 	background:url('http://localhost:8000/frontend/all/icon/clipboard.png') no-repeat center center transparent;
@@ -57,7 +58,7 @@
 .module{
     width:1000px;
     margin:50px auto;
-    padding:10px;
+    padding:15px;
     text-align:left;
     position:relative;
     background:#fff;

@@ -21,7 +21,7 @@ var uikit  = angular.module('uikit',[]);
             config : '<'
         },
         
-        templateUrl : "/ng-module/utile/select-file.html",
+        templateUrl : "/backshop/js/ng-module/utile/select-file.html",
         
         controller : [ '$element' , '$http' , function($element , $http){
             

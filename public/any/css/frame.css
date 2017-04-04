@@ -32,15 +32,6 @@ ul{
     padding:0;
     margin:0;
 }
-.blue-button{
-    background: #3F7DF9;
-    border: 1px solid #4A82E8;
-    border-bottom: 1px solid #2458BB;
-    color:#fff;/**/
-}
-.blue-button:hover{
-    background-color: #3576F7;
-}
 /*** content ***/
 .header , .container{
 	max-width:1000px;
@@ -173,7 +164,7 @@ ul{
 
 /********* product grid ********/
 
-/*** user kit ***/
+/*** user uikit ***/
 .bt{
     margin:0 auto;
     padding:10px 20px;
@@ -182,14 +173,13 @@ ul{
     font-family:Arial,Helvetica,sans-serif;
     cursor:pointer;
 	outline:none;
-	border-radius:3px;
 }
 .bt:active{
     border-color:#fff;
 	box-shadow:none;
 }
 .defaultbt{
-	color:#000;
+    color:#000;
     background:#eee;
     border:1px solid #ccc;
     border-bottom:1px solid #bbb;
@@ -198,24 +188,7 @@ ul{
 .defaultbt:hover{
 	background:#e5e5e5;
 }
-.txt{
-    display:block;
-	width:90%;
-    padding:10px 5px;
-	margin:0 0 25px 0;
-    border:2px solid #ccc;
-    outline:transparent solid 0;
-}
-.txt:focus{
-	border-color:#3f7df9;
-	background:#fff;
-}
-/* submit button */
-.sendform{
-	display:inline-block;
-	text-align:center;
-	position:relative;
-}
+
 .sendform > .formload{
 	width:100%;
 	position:absolute;
@@ -251,6 +224,7 @@ span.close:hover{
 }
 
 /* login form */
+
 #logindiv{
 	position:fixed;
 	top:100px;
@@ -306,6 +280,9 @@ span.close:hover{
 .loginform .txt{
     width:300px;
     margin-bottom:25px;
+}
+.loginform .sendform{
+	width:100%;
 }
 .loginform input[type='submit']{
 	width:100%
@@ -406,6 +383,8 @@ span.close:hover{
 	border-color: #FF0;
 	*/
 }
+
+/*************************************************************/
 .carousel-nav span{
 	width:30px;
 	height:60px;
@@ -425,16 +404,4 @@ span.close:hover{
     right:20px;
     background:url('/any/img/next-arrow.png') no-repeat 6px center white;
 	border-radius:2px;
-}
-
-/**********/
-.switch{
-	position:fixed;
-	top:10px;
-	left:10px;
-	z-index:1000;
-	opacity:0;
-}
-.switch:hover{
-	opacity:1;
 }
