@@ -70,28 +70,6 @@ var uikit  = angular.module('uikit',[]);
                 view.src = oldFile.value;
             };
             
-            form.onsubmit = function(e){
-                e.preventDefault();
-                
-                if(fileField.value === ""){
-                    alert('You Must choose a file');
-                    return false;
-                }
-                 
-                ajaxProgress.call(form ,true);
-                ajaxSaveFile(that.config.endpoint);
-                
-                /* demo
-                srvResponse = function(){
-                    clearTimeout(timeout);
-                    ajaxProgress.call(form ,false);
-                    
-                };
-                ajaxProgress.call(form ,true);
-                timeout = setTimeout(srvResponse, 1000); 
-                */                
-               
-            };
             
             var ajaxProgress = function(progress){ 
                 
@@ -114,7 +92,7 @@ var uikit  = angular.module('uikit',[]);
                 var dataFile = new FormData();
                     dataFile.append(fileField.name , fileField.files[0]);
                     
-                //*
+                /*
                 $http({
                     method :"POST",
                     url : endpoint,
@@ -165,6 +143,31 @@ var uikit  = angular.module('uikit',[]);
                     ajaxProgress.call(form,false);
                 });
                 //*/
+            };
+            
+            form.onsubmit = function(e){
+                e.preventDefault();
+                
+                if(fileField.value === ""){
+                    alert('You Must choose a file');
+                    return false;
+                }
+                 
+                /*
+                ajaxProgress.call(form ,true);
+                ajaxSaveFile(that.config.endpoint);
+                */
+                
+                //* demo
+                srvResponse = function(){
+                    clearTimeout(timeout);
+                    ajaxProgress.call(form ,false);
+                    
+                };
+                ajaxProgress.call(form ,true);
+                timeout = setTimeout(srvResponse, 1000); 
+                //*/                
+               
             };
     }]
         

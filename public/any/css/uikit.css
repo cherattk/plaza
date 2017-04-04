@@ -169,11 +169,11 @@ textarea{
 }
 .sendform > .formload{
 	width:100%;
-	height:35px;
+	height:40px;
 	position:absolute;
 	z-index:100;
-	top:0;
-	left:0;
+	top:-1px;
+	left:-1px;
 	display:none;
 	padding:0;
 	background:#eee;
@@ -181,13 +181,12 @@ textarea{
 	border-radius:3px;
 }
 .icon-load{
-    background: url('/img/load.gif') center center no-repeat transparent;
+    background: url('/any/img/load.gif') center center no-repeat transparent;
 }  
 .sendform .icon-load{
-	height:35px;
+	height: 100%;
 	padding:0;
 	text-align:left;
-	font-weigh:bold;
 	display:block;
 	text-transform:capitalize;
 }
