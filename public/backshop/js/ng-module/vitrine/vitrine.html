@@ -1,0 +1,80 @@
+<!--  VITRINE  -->
+<div>
+    <div class="banner">
+        <!--banner image-->
+        <div class="banimg">
+            <img id="banner-img" src="/img/shop_banner.png"/>
+        </div>
+        
+        <div class="filediv">
+            <!-- BANNER : Select File -->
+            <select-file config="$ctrl.configSelectFile"></select-file>
+        </div>
+    </div>
+
+    <div class="div63-6 aboutshop">
+        <h1 class="h1">Informations de contact</h1>
+        <form id="aboutform" class="form">
+
+        <label>Adresse</label>
+        <input type="text" class="txt" name="shopadrs"/>
+
+        <div class="div55">
+            <label>Ville</label>
+            <input type="text" class="txt" name="shopville"/>
+        </div>
+        <div class="div55">
+            <label>Code Postale</label>
+            <input type="text" class="txt" maxlength="6" name="shopcp"
+                   value=""/>
+         </div>
+
+        <div class="div55">
+            <label>Telephone</label>
+            <input type="text" class="txt" maxlength="10" name="shoptel"
+                   value=""/>
+        </div>
+        <div class="div55">
+            <label>Courriel</label>
+            <input type="text" class="txt" name="shopmail"/>
+        </div>
+        <input type="submit" name="shopsave" class="bt save" value="Enregistrer"/>
+    </form>
+    </div>
+
+    <div class="div63-3">
+        <h1 class="h1">Logo du magasin</h1>
+        <div class="setlogo">
+            <div class="shoplogo">
+                <img src="/img/shop_logo.png"/>
+            </div>
+
+            <!-- LOGO : Select File -->
+            <div class="filediv">
+            <form id="setlogo" class="selectfile"
+                  method="post" enctype="multipart/form-data"
+                  action="#"
+                  data-view = "shoplogo">
+
+            <input type="hidden" name="default"/>
+            <input type="file" name="file" class="file"/>
+
+            <input type="button" name="browse" value="Nouvelle Image" class="bt blue-button"/>
+
+            <!--send form-->
+            <div class="savefile">
+                <!--send form-->
+                <div class="sendform">
+                    <input type="submit" value="Enregistrer" name="save" class="bt save"/>
+                    <div class="formload">
+                        <span class="icon-load"></span>
+                    </div>
+                </div>
+                <input type="reset" name="cancel" value="Annuler" class="bt"/>
+            </div>
+            </form>
+            </div>
+        </div>
+    </div>
+
+</div>

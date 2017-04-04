@@ -1,0 +1,137 @@
+<!-- Product Editor -->
+<div class="item-editor">
+
+    <h1 class="h1">
+        Fiche Produit
+        <span id="closeditor" class="close"
+              ng-click="$ctrl.closeStockEditor()">
+            X
+        </span>
+    </h1>
+
+    <!--product link-->
+    <p id="prodlink" class="prodlink">
+        <a href="#">Voir la page du produit</a>
+    </p>
+
+    <!-- Fiche Navigation -->
+    <div id="edit-itemnav" class="edit-itemnav">
+
+        <input id="getfdata1" value="edit-itemdata" name="fichenav" type="radio" checked="checked">
+        <label for="getfdata1"><span></span>Generale</label>
+
+        <input id="getfdata2" value="edit-itemimage" name="fichenav" type="radio">
+        <label for="getfdata2"><span></span>Images</label>
+        <hr/>
+    </div>
+
+
+    <!-- Item Description -->
+    <div id="edit-itemdata" class="form">
+    <form id="itemform">
+
+        <input type="hidden" name="itemid" ng-model="$ctrl.item.id"/>
+
+        <div>
+            <label>Nom du produit</label>
+            <textarea class="txt" cols="60" rows="3" name="name"
+                    ng-model="$ctrl.item.name"></textarea>
+        </div>
+
+        <div>
+            <label>Categorie</label>
+            <select>
+                <option>Categorie</option>
+                <option>Categorie</option>
+                <option>Categorie</option>
+                <option>Categorie</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Prix Régulié</label>
+            <input type="text" class="txt price" name="price"
+                ng-model = "$ctrl.item.price"/>
+        </div>
+
+        <div>
+            <label>Prix Solde</label>
+            <input type="text" class="txt price" name="pricepromo"
+                    ng-model = "$ctrl.item.promoprice"/>
+        </div>
+
+        <div>
+            <label>Description du produit<span>(360 characters)</span></label>
+            <textarea class="txt" cols="60" rows="10" name="description"
+                    ng-model = "$ctrl.item.description"></textarea>
+        </div>
+
+
+        <!--send form-->
+        <div class="sendform">
+            <input type="submit" value="Enregistrer" name="save" class="bt save"/>
+            <div class="formload">
+                <span class="icon-load"></span>
+            </div>
+        </div>
+
+    </form>
+    </div>
+
+    <!-- Item Image -->
+    <div id="edit-itemimage" class="div63">
+        <h1 class="h1"> Images </h1>
+        <div>
+            <!-- Default image-->
+            <div class="view-itemimg">
+                <img id="view-itemimg" alt="Item Image View"
+                     src="{{$ctrl.item.image[0]}}"/>
+            </div>
+        </div>
+
+        <div>
+            <div id="item-thumblist" class="thumblist">
+                <div ng-repeat="img in $ctrl.item.image">
+                    <div class="thumb">
+                        <img ng-src="{{img}}"/>
+                    <label>
+                    <input type="radio" name="thumb" data-src=""
+                           checked="checked"/><span></span>
+                    </label>
+                    </div>
+                    <input type="button" value="delete" data-value="">
+                </div>
+            </div>
+
+            <!-- ItemImage : Select File -->
+            <div class="filediv">
+                <form id="setitemimage" class="selectfile"
+                      enctype="multipart/form-data"
+                      method="post"
+                      action=""
+                      data-view="view-itemimg">
+
+                <input type="hidden" name="default"/>
+                <input type="file" name="file" class="file"/>
+
+                <input type="button" name="browse" value="Nouvelle Image" class="bt blue-button"/>
+
+
+                <div class="savefile">
+                    <!--send form-->
+                    <div class="sendform">
+                        <input type="submit" value="Enregistrer" name="save" class="bt save"/>
+                        <div class="formload">
+                            <span class="icon-load"></span>
+                        </div>
+                    </div>
+                    <input type="reset" name="cancel" value="Annuler" class="bt"/>
+                </div>
+                </form>
+            </div><!-- Fin Select File -->
+        </div>
+
+
+    </div><!-- fin edit item image -->
+
+</div><!-- fin edit prod-->

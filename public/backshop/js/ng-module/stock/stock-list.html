@@ -1,0 +1,87 @@
+<!--Stock Liste-->
+<div>
+<!--
+<h1>overview description of action to do</h1>
+-->
+    <!--Stock Controle-->
+    <div class="module-action">
+
+        <!---->
+        <div class="module-b">
+            <div id="additem" class="bt blue-button">
+            Add New Item
+            </div>
+        </div>
+
+        <div class="sortby" style="display: none">
+            <div><span>Filtrer</span></div>
+            <div id="stock-filtre" class="select-menu">
+                <label class="drop-option">
+                   <p>option</p>
+                   <span>+</span>
+                   <input type="hidden" name="filtreby">
+               </label>
+                <ul class="option-menu block-arrow top-arrow">
+                   <li data-value="d">Par Date</li>
+                   <li data-value="p">Par Prix</li>
+                   <li data-value="s">Par Solde</li>
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- Liste -->
+    <div class="stocklist">
+
+        <table class="tab-list">
+            <colgroup>
+                <col style="width:50px;"/>
+                <col style="width:100px;"/>
+                <col style="width:150px;"/>
+                <col style="width:180px;"/>
+                <col style="width:180px;"/>
+                <col style="width:100px;"/>
+                <!--<col style="width:100px;"/>-->
+            </colgroup>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Image</th>
+                    <th>Nom</th>
+                    <th>Quantité Disponible</th>
+                    <th>Quantité Minimun</th>
+                    <th>Prix Régulié</th>
+                    <th>Prix Solde</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr ng-repeat="item in $ctrl.items">
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>
+                        <div class="imgdiv"><img src="{{ item.image }}"/></div>
+                    </td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.qtedispo }}</td>
+                    <td>{{ item.qtemini }}</td>
+                    <td>{{ item.price }}</td>
+                    <td>{{ item.pricepromo }}</td>
+                    <td>
+                        <div class="itemctrl" data-itemid="{{item.itemid}}">
+                            <label ng-click="$ctrl.openStockEditor()">details</label>
+                            <!--<label data-action="edititem" class="getitem">Editer</label>-->
+                            <!--<label data-action="seeitem">Voir</label>-->
+                            <!--<label data-action="removeitem" class="delitem">Supprimer</label>-->
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>

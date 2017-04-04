@@ -2,11 +2,9 @@
 /vendor/
 /data/
 /config/
-/module/Shop/
 /module/Vitrine/test/
 /public/dev/
 /public/imagehost/
-/public/backshop/
 /public/index.php
 /public/.htaccess
 /init_autoloader.php
