@@ -79,6 +79,7 @@
 	margin:0;
 	border: 1px solid #2eb960;
 	color: #ffffff;
+        text-transform:uppercase;
 }
 .sub-banner > div{
 	display:inline-block;

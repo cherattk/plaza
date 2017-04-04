@@ -1,66 +1,66 @@
 .icon-home{
-	background:url('../img/shop.png') no-repeat center left;
+	background:url('/any/img/shop.png') no-repeat center left;
 	float:left;
 	display:block;
 	width:35px;
 	height:30px;
 }
 .icon-basket{
-	background:url('../img/basket.png') no-repeat center center;
+	background:url('/any/img/basket.png') no-repeat center center;
 }
 .icon-location{
-	background:url('../img/location.png') no-repeat center left;
+	background:url('/any/img/location.png') no-repeat center left;
 }
 .icon-mail{
-	background:url('../img/mail.png') no-repeat center left;
+	background:url('/any/img/mail.png') no-repeat center left;
 }
 .icon-whois{
-	background:url('../img/whois.png') no-repeat center left;
+	background:url('/any/img/whois.png') no-repeat center left;
 }
 .socialmedia .fb{
-        background-image:url('../img/fb.png');
+        background-image:url('/any/img/fb.png');
 }
 .socialmedia .twitter{
-	background-image:url('../img/tw.png');
+	background-image:url('/any/img/tw.png');
 }
 .socialmedia .google{
-	background-image:url('../img/gg.png');
+	background-image:url('/any/img/gg.png');
 }
 .socialmedia .pint{
-	background-image:url('../img/pin.png');
+	background-image:url('/any/img/pin.png');
 }
 .menuicon:before{
-	content:url('../img/menu.png');
+	content:url('/any/img/menu.png');
 	float:left;
 	margin-right:10px;
 }
 .star-vote{
-	background:url('../img/star-vote.png') no-repeat center center;
+	background:url('/any/img/star-vote.png') no-repeat center center;
 }
 .star-empty{
-	background:url('../img/star-empty.png') no-repeat center center;
+	background:url('/any/img/star-empty.png') no-repeat center center;
 }	
 .icon-visa{
-	background:url('../img/visa.png') no-repeat center center transparent;
+	background:url('/any/img/visa.png') no-repeat center center transparent;
 }
 .icon-mastercart{
-	background:url('../img/mastercard.png') no-repeat center center transparent;
+	background:url('/any/img/mastercard.png') no-repeat center center transparent;
 }
 .icon-amex{
-	background:url('../img/amex.png') no-repeat center center transparent;
+	background:url('/any/img/amex.png') no-repeat center center transparent;
 }
 .icon-discover{
-	background:url('../img/discover.png') no-repeat center center transparent;
+	background:url('/any/img/discover.png') no-repeat center center transparent;
 }
 .icon-paypal{
-	background:url('../img/paypal.png') no-repeat center center transparent;
+	background:url('/any/img/paypal.png') no-repeat center center transparent;
 }
 .icon-shipping{
-	background:url('../img/shipping.png') no-repeat center center transparent;	
+	background:url('/any/img/shipping.png') no-repeat center center transparent;	
 }
 .icon-basket-main{
-	background:url('../img/basket-main.png') no-repeat center center;
+	background:url('/any/img/basket-main.png') no-repeat center center;
 }
 .icon-profil{
-	background:url('../img/small-profil.png') no-repeat center center;
+	background:url('/any/img/small-profil.png') no-repeat center center;
 }

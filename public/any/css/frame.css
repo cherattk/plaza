@@ -96,7 +96,9 @@ ul{
 }
 
 .login{
-    padding:9px 20px;
+	width:120px;
+	text-align:center;
+    padding:9px 0;
     display: inline-block;
     margin-top:15px;
     border-radius:3px;

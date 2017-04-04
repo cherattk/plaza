@@ -34,14 +34,8 @@
     <!-- ABOUT SHOP  -->
     <div class="contact">
 
-        <?php  if($this->layout()->isConnected) :  ?>
-            <!--bookmark-->
-            <div class="bookmark blue-button">Ajouter aux favoris</div>
-        <?php else : ?>
-            <div class="bookmark blue-button">Not Connected</div>
-        <?php endif ?>
-                
-        
+        <!--bookmark-->
+        <div class="bookmark blue-button" onclick="alert('todo : add to favoris');">Ajouter aux favoris</div>
 
         <!-- SOCIAL MEDIA -->
         <div class="socialmedia">
@@ -99,7 +93,7 @@
                 <!-- contact -->
                 <div id="about-2" class="contact-info">
                     <div class="contact-form">   
-                        <form id="contact-form">			
+                        <form id="contact-form" onsubmit="alert('todo : send form'); return false;">			
                             <label>Nom</label>
                             <input type="text" class="txt" name="vstname"/>
 
@@ -125,10 +119,13 @@
                     </div>
 
                     <div class="contact-adrs">
-                        <p>134 rue machin, ville</p>
-                        <p>Montreal, Quebec, Canada</p>
-                        <p>Telephone : (123) - 456-789</p>
-                        <p>Fax : (123) - 456-789</p>       
+                        <p>123 rue des magasins</p>
+                        <p>Ville, Pays</p>
+                        <p>Telephone : (123)-456-7890</p>
+                        <p>Fax : (123)-456-7890</p>
+                        <div class="contact-maps">
+                            <img src="/any/img/map.png">
+                        </div>
                     </div>
 
                 </div>

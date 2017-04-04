@@ -15,7 +15,7 @@
                 <div class="contact">
 
                     <!--bookmark-->
-                    <div class="bookmark blue-button">Ajouter aux favoris</div>
+                    <div class="bookmark blue-button" onclick="alert('todo : add to favoris');">Ajouter aux favoris</div>
 
                     <!-- SOCIAL MEDIA -->
                     <div class="socialmedia">
@@ -77,15 +77,15 @@
                             <!-- contact -->
                         <div id="about-2" class="contact-info">
                             <div class="contact-form">   
-                                <form id="contact-form">			
+                                <form id="contact-form" onsubmit="alert(' todo : send form'); return false;">			
                                     <label>Nom</label>
-                                    <input type="text" class="txt" name="vstname"/>
+                                    <input type="text" class="txt" name="name"/>
 
                                     <label>Telephone</label>
-                                    <input type='text' class="txt" name="vstphone"/>
+                                    <input type='text' class="txt" name="phone"/>
 
                                     <label>Courriel</label>
-                                    <input type="text" class="txt" name="vstmail"/>
+                                    <input type="text" class="txt" name="mail"/>
 
                                     <label>Message</label>                    
                                     <textarea class="txt" cols="50" rows="10" name="vstmessage" value=""></textarea>			
@@ -103,10 +103,13 @@
                             </div>
 
                             <div class="contact-adrs">
-                                <p>134 rue machin, ville</p>
-                                <p>Montreal, Quebec, Canada</p>
-                                <p>Telephone : (123) - 456-789</p>
-                                <p>Fax : (123) - 456-789</p>       
+                                <p>123 rue des magasins</p>
+                                <p>Ville, Pays</p>
+                                <p>Telephone : (123)-456-7890</p>
+                                <p>Fax : (123)-456-7890</p>
+                                <div class="contact-maps">
+                                    <img src="/any/img/map.png">
+                                </div>
                             </div>
 
                         </div>
@@ -223,9 +226,9 @@
 
             <!-- VOTE  -->
             <div class="rating">
-                <span class="icon star-empty"></span>
-                <span class="icon star-empty"></span>
-                <span class="icon star-empty"></span>
+                <span class="icon star-vote"></span>
+                <span class="icon star-vote"></span>
+                <span class="icon star-vote"></span>
                 <span class="icon star-empty"></span>
                 <span class="icon star-empty"></span>
                 <label>Evaluer ce produit</label>
@@ -235,7 +238,7 @@
         <div class="basket">
 
             <!--Basket Form--> 
-            <form id="basketform">
+            <form id="basketform" onsubmit="alert('add item to basket'); return false;">
                 <input type="hidden" 
                        value="<?php echo $this->item['id'];?>" name="item"/>
 
@@ -276,40 +279,32 @@
                       <col style="width:30%"/>
                     </colgroup>
                       <tr>
-                          <th>Destination</th><th>Frais</th>
+                        <th>Destination</th><th>Frais</th>
                       </tr>
                       <tr>
-                          <td>Montréal</td><td>$2,00</td>
+                        <td>Montreal</td><td>$2,00</td>
                       </tr>
                       <tr>							
-                          <td>Hors Montréal</td><td>$4,00</td>
+                        <td>Hors Montreal</td><td>$4,00</td>
                       </tr>
                 </table>
             </li>
 
-            <!-- return policy 
+            <!-- policy -->
             <li><h3>Conditions de Vente</h3>
                 <div>
                     <p>
-                      On sait depuis longtemps que travailler avec du texte lisible 
-                      et contenant du sens est source de distractions,
-                      et empêche de se concentrer sur la mise en page elle-même.
-                      L'avantage du Lorem Ipsum sur un texte générique comme 'Du texte.
-                      Du texte. Du texte.' est qu'il possède une distribution 
-                     de lettres plus ou moins normale, et en tout cas comparable 
-                     avec celle du français standard.
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus porttitor, metus ac suscipit luctus, sem justo venenatis leo, sit amet porttitor nulla ipsum non ex. Cras pharetra scelerisque venenatis. Fusce a lectus et ex dapibus molestie vel vel erat. Integer laoreet eros molestie, maximus arcu in, placerat ligula. Aliquam erat volutpat. Aliquam enim ex, porta quis nunc rhoncus, suscipit posuere lacus. Aenean in malesuada justo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Praesent faucibus leo a purus eleifend imperdiet. Mauris rhoncus ante et justo commodo semper. Sed et sem a enim consequat pretium. Pellentesque nec condimentum lacus, eu finibus mauris.
                     </p>
                 </div>
             </li>
-            -->
+            
         </ul>
         </div>
 
         </div>
 
-        <div class="grid">
-            <h2>Produits Similaires</h2>
-        </div>
+        
     </div>
 
 </div>

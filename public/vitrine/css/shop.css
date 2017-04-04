@@ -135,7 +135,7 @@
 	display:none;
 }
 */
-.aboutpage label:hover{
+.aboutpage > label:hover{
 	color:#000;
 	box-shadow:none;
 	background:#E8EEF9;
@@ -204,6 +204,11 @@
     padding:0;
     font-size:19px;
 }
+.contact-maps{
+	border: 2px solid #555;
+	padding:2px;
+	margin-top:20px;
+}
 .menu-catalogue li{
 	display:inline-block;
 	vertical-align:top;
@@ -236,7 +241,7 @@
 	border-radius:3px;
 }
 .bookmark:before{
-	content:url('/img/heart.png');
+	content:url('/any/img/heart.png');
 	position:absolute;
 	top:10px;
 	right:15px;

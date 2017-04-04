@@ -229,6 +229,8 @@
 .salemode p{
 	color:#333;
 	line-height:1.7;
+	margin:20px;
+	text-align:justify;
 }
 .salemode li{
 	margin-bottom:20px;

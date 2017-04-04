@@ -37,20 +37,24 @@
             <a href="/">LOGO</a>
         </h1>
 
-        <!--info link-->
+        <!--info link
         <div class="headlink">
            <a href="#">&#192; propos</a>
            <a href="#">Aide</a>
         </div>
+        -->
         
         <!--login button--> 
-        <div id="getlogform" class='login'>            
-            <?php  if($this->layout()->isConnected) :  ?>
-                Connected
-            <?php else : ?>
-                Not Connected
-            <?php endif ?>
-        </div>
+        <?php  if($this->layout()->isConnected) :  ?>
+            <div class='login' onclick="alert('todo : go to user space');">
+                    Profil
+            </div>
+        <?php else : ?>
+            <div class='login' id="getlogform" >
+                Connexion
+            </div>
+        <?php endif ?>
+        
         
     </div>
 </div>
@@ -61,11 +65,14 @@
 <!-- FOOTER -->
 <div class="footer">
     <ul>
+        <li>&#169;2017&#160; Cheratt Karim</li>
+        <!--
         <li>&#169;2017&#160; Compagnie</li>
         <li>&#192; propos</li>
         <li>Vendre</li>
         <li>Acheter</li>
         <li>Conditions d'utilisation</li>
+        -->
     </ul>
 </div>
 

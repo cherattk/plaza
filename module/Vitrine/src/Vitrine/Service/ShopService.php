@@ -22,6 +22,7 @@ class ShopService implements ShopInterface
         
         $id  = 'Shop-' . $id;
         $shop = [
+            'id' => 'shop1234',
             'name' => 'My Shop',
             'link' => '/shop/1234',
             'banner' => '', // use default banner

@@ -46,10 +46,19 @@ class ProductService implements ProductInterface
         // DUMMY DATA //
         $item = [
             'id' => $id,
-            'name' => 'product name',
-            'price' => "12.5",
+            'name' => 'super product name',
+            'price' => 12.5,
             'image' => [],
-            'description' => 'item description'
+            'description' => 'Lorem ipsum dolor sit amet, '
+                        . 'consectetur adipiscing elit. Vivamus porttitor,'
+                        . ' metus ac suscipit luctus, sem justo venenatis leo,'
+                        . ' sit amet porttitor nulla ipsum non ex. Cras'
+                        . ' pharetra scelerisque venenatis. '
+                        . 'Fusce a lectus et ex dapibus molestie'
+                        . ' vel vel erat. Integer laoreet eros molestie,'
+                        . ' maximus arcu in, placerat ligula. Aliquam erat '
+                        . 'volutpat. Aliquam enim ex, porta quis nunc rhoncus, '
+                        . 'suscipit posuere lacus. Aenean in malesuada justo'
             
         ];
         

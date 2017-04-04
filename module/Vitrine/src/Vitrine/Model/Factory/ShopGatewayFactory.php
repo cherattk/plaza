@@ -11,7 +11,7 @@ use Vitrine\Model\Gateway\ShopGateway;
 
 class ShopGatewayFactory
 {
-    private static $TAB_NAME = 'boutique';
+    private static $TAB_NAME = 'shop';
     
     public function __invoke($s_locator)
     {

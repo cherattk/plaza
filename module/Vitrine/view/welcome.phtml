@@ -13,14 +13,16 @@
             <span id="next-img" class="icon-nav-right"></span>
             
             <div class="banimg">   
-                <img src="<?php echo $this->imagePath . '/shop/promo-banner.jpg'; ?>"/>
-                <img src="<?php echo $this->imagePath . '/shop/orange-banner.jpg'; ?>"/>
+                <img src="<?php echo '/any/img/banner-1.png'; ?>"/>
+                <img src="<?php echo '/any/img/banner-2.png'; ?>"/>
+                <img src="<?php echo '/any/img/banner-3.png'; ?>"/>
             </div>
         </div> <!-- carousel -->
         
         <div class="sub-banner">
             <h1>
-            WHITE SALE! UP TO 50% OFF SELECTED ITEMS, INCLUDING BED, BATH & WINDOW BASICS
+            Lorem ipsum dolor sit amet 50%, consectetur adipiscing elit.
+            Vivamus porttitor
             </h1>            
         </div>
     </div>
@@ -40,7 +42,7 @@
             </div>
             <div class="shopcard-2">
                 <div class="shopcard-img">
-                <img src="<?php echo $this->imagePath . '/shop/logo-3.jpg'; ?>">
+                    <img src="<?php echo '/any/img/shop_logo.png'; ?>">
                 </div>
                 <h3>MyShopName</h3>
                 <p>Informatique</p>
@@ -61,7 +63,7 @@
                     <div class="cellgrid">
                         <a href="<?php echo $item['link'] ?>">
                         <div class="imgdiv">
-                            <img src="<?php echo $this->imagePath . "/item/" .$item['img'] ?>"/>
+                            <img src="<?php echo $item['img'] ?>"/>
                         </div>
                         <h4><?php echo $item['name'] ?></h4>
                         <p>$<?php echo $item['price'] ?></p>
@@ -79,12 +81,12 @@
             <div class="prodlist">
                 <?php foreach ($this->items as $item): ?>
                     <div class="cellgrid">
-                        <a href="<?php echo $item['link'] ?>">
+                        <a href="<?php echo $item['link'] ; ?>">
                         <div class="imgdiv">
-                            <img src="<?php echo $this->imagePath . "/item/" . $item['img'] ?>"/>
+                            <img src="<?php echo $item['img'] ; ?>"/>
                         </div>
-                        <h4><?php echo $item['name'] ?></h4>
-                        <p>$<?php echo $item['price'] ?></p>
+                        <h4><?php echo $item['name'] ; ?></h4>
+                        <p>$<?php echo $item['price'] ; ?></p>
                         </a>
                     </div>
                 <?php endforeach;?>
