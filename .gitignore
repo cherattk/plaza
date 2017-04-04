@@ -9,10 +9,6 @@
 /public/backshop/
 /public/index.php
 /public/.htaccess
-/composer.json
-/.gitmodules
-/README.md
 /init_autoloader.php
-/LICENSE.txt
 /module/Vitrine/view/test/
 /todo/
