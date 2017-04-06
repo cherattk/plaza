@@ -36,6 +36,6 @@ return array(
      ),
 );
 ```
-##### Product Page 
+##### Screenshot of Product Page 
 ![Product Page](/screenshot/plaza-product.png?raw=true "Product Page")
 
