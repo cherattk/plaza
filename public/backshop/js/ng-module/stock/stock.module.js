@@ -9,7 +9,7 @@ var stock = angular.module('stockModule',[]);
             $scope.showStockEditor = arg;
         });
 
-        $scope.showStockEditor = true;
+        $scope.showStockEditor = false;
 
     }]);
 
