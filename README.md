@@ -1,7 +1,23 @@
 # Plaza
 Ecommerce plateform based on ZF2 MVC layer and module systems.
-## Usage with Zend Skeleton Application for ZF2 : 
-##### config/autoload/global.php must return this config array
+
+## Usage with ZendSkeletonApplication for ZF2
+
+1 - Make a fresh installation of 
+    [ZendSkeletonApplication 2.4](https://github.com/zendframework/ZendSkeletonApplication/blob/release-2.4/README.md) 
+
+2 - Dowload /plaza-dev/ and Copy the content of /plaza-dev/module/* and  /plaza-dev/public/* in /module/ and /public/ folders of the sketeleon
+
+##### 3 - add to config/application.config.php
+
+``` php 
+    'modules' => array(
+        'Vitrine', // add this
+        'Shop', // add this
+    ),
+```
+
+##### 4 - add to config/autoload/global.php this config array
 
 ``` php
 return array(
