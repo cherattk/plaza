@@ -36,3 +36,6 @@ return array(
      ),
 );
 ```
+##### Product Page 
+![Product Page](/screenshot/plaza-product.png?raw=true "Product Page")
+
