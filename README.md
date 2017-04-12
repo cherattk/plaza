@@ -36,6 +36,6 @@ return array(
      ),
 );
 ```
-##### Screenshot of Product Page 
-![Product Page](/screenshot/plaza-product.png?raw=true "Product Page")
+##### Screenshot of Shop Page 
+![Shop Page](/screenshot/plaza-shop.png?raw=true "Shop Page")
 
