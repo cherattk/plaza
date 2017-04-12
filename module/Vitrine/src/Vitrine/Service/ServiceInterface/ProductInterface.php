@@ -1,5 +1,5 @@
 <?php
-namespace Vitrine\ServiceInterface;
+namespace Vitrine\Service\ServiceInterface;
 
 interface ProductInterface
 {

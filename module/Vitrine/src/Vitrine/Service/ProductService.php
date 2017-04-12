@@ -2,7 +2,7 @@
 
 namespace Vitrine\Service;
 
-use Vitrine\ServiceInterface\ProductInterface;
+use Vitrine\Service\ServiceInterface\ProductInterface;
 use Vitrine\Model\Gateway\ProductGateway;
 
 class ProductService implements ProductInterface

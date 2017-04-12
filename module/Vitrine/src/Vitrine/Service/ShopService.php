@@ -2,7 +2,7 @@
 
 namespace Vitrine\Service;
 
-use Vitrine\ServiceInterface\ShopInterface;
+use Vitrine\Service\ServiceInterface\ShopInterface;
 use Vitrine\Model\Gateway\ShopGateway;
 
 class ShopService implements ShopInterface
