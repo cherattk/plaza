@@ -1,27 +1,12 @@
 var uikit  = angular.module('uikit',[]);
     
-//    uikit.directive('browseFile' , function(){
-//        return {
-//            restrict : "A",            
-//            link : function(scope , el){
-//                
-//                //console.log(attr);
-//                $(el).on('click' , function(){
-//                    //console.log(this);
-//                    $(this).prev().click();
-//                });
-//            }
-//        };
-//        
-//    });
-    
     uikit.component('selectFile' , {
         
         bindings :{
             config : '<'
         },
         
-        templateUrl : "/backshop/js/ng-module/utile/select-file.html",
+        templateUrl : "/any/js/ng-module/select-file.html",
         
         controller : [ '$element' , '$http' , function($element , $http){
             

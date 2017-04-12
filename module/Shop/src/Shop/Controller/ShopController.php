@@ -19,13 +19,4 @@ class ShopController extends AbstractActionController
         return $view;
     }
     
-    public function stockAction()
-    {        
-        //$param = $this->params('slug');
-    }
-    
-    public function imageAction()
-    {
-        
-    }
 }

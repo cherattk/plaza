@@ -26,7 +26,7 @@ return array(
                     )
                 ),                
             ),
-            'image' => array(
+            'shopimage' => array(
                 'type'    => 'Literal',
                 'options' => array(
                     'route'    => '/backshop/image',

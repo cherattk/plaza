@@ -356,11 +356,10 @@ ul{
 
 /*********** Item Editor *******************/
 .item-editor{
-	/* border:1px solid #ccc; */
+	border:1px solid #ccc;
 	border-radius:5px;
 	overflow:hidden;
-	/* padding: 10px; */
-	/* background: #eef2f9; */
+	padding: 10px;
 }
 .item-editor .close{
 	background: #3E637B;
