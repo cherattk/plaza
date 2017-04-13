@@ -1,114 +1,36 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>BackShop</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<link href='https://fonts.googleapis.com/css?family=Archivo+Narrow:400,700' rel='stylesheet' type='text/css'>
+<!--app main--> 
+<div class="app-main" ng-app="backShop">
 
+    <!-- MODULE NAVIGATION -->
+    <div id="modulenav" class="nav modulenav">
+        <input id="getmod1" value="module-vitrine" name="modnav" type="radio" checked="checked"/>
+        <label for="getmod1">Vitrine</label>
 
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"
-        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
-        crossorigin="anonymous"></script>
-
-<!-- AngularJS -->
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
-
-
-<link rel="stylesheet" type="text/css" href="/any/css/uikit.css"/>
-
-<link rel="stylesheet" type="text/css" href="/backshop/css/backshop.css"/>
-
-</head>
-
-<body>
-
-<div class="app" ng-app="backShop">
-
-    <!-- sidebar-->
-    <div class="app-head">
-        <div>
-            <h1 class="logo">
-            <a href="welcome.html">LOGO</a>
-          </h1>
-          <div class="app-head-action">
-              <a href="#">Help</a>
-              <span class='logout'>Deconnexion</span>
-          </div>
-        </div>        
+        <input id="getmod2" value="module-stock" name="modnav" type="radio" />
+        <label for="getmod2">Stock</label>
     </div>
 
-    <!--app main--> 
-    <div class="app-main">
 
-        <!-- MODULE NAVIGATION -->
-        <div id="modulenav" class="nav modulenav">
-            <input id="getmod1" value="module-vitrine" name="modnav" type="radio" checked="checked"/>
-            <label for="getmod1">Vitrine</label>
+    <div id="app-module" class="module-container">
 
-            <input id="getmod2" value="module-stock" name="modnav" type="radio" />
-            <label for="getmod2">Stock</label>
+        <div id="module-vitrine" class="module">
+            <vitrine-banner></vitrine-banner>
         </div>
-        
 
-        <div id="app-module" class="module-container">
-            
-            <div id="module-vitrine" class="module">
-                <vitrine-banner></vitrine-banner>
+        <div id="module-stock" class="module"
+             ng-controller="stockController">
+
+            <div ng-show="!showStockEditor">
+                <stock-list></stock-list>
             </div>
 
-            <div id="module-stock" class="module"
-                 ng-controller="stockController">
-
-                <div ng-show="!showStockEditor">
-                    <stock-list></stock-list>
-                </div>
-
-                <div ng-show="showStockEditor">
-                    <stock-editor></stock-editor>
-                </div>
+            <div ng-show="showStockEditor">
+                <stock-editor></stock-editor>
             </div>
-            
         </div>
-    </div>
-    
-    <!-- FOOTER -->
-    <div class="footer">
-        <ul>
-            <li>&#169;2017&#160; Cheratt Karim</li>
-        </ul>
-    </div>
 
+    </div>
 </div>
-
-<script type="text/javascript" src="/any/js/ng-module/select-file.js"></script>
-<script type="text/javascript" src="/backshop/js/ng-module/stock/stock.module.js"></script>
-<script type="text/javascript" src="/backshop/js/ng-module/vitrine/vitrine.module.js"></script>
-<script type="text/javascript" src="/backshop/js/ng-module/backshop.module.js"></script>
-
-<script type="text/javascript">
-    (function(){
-        var navbar = document.getElementById("modulenav").childNodes;
-        var activeModuleId = null;
-        for(var i=0 ; i < navbar.length ; i++){
-            if( "INPUT" === navbar[i].nodeName){
-
-                if(navbar[i].checked){
-                    activeModuleId = navbar[i].value;
-                }else{
-                    document.getElementById(navbar[i].value).style.display = "none";
-                }
-                navbar[i].onchange = function(){
-                    document.getElementById(activeModuleId).style.display = "none";
-                    document.getElementById(this.value).style.display = "block";
-                    activeModuleId = this.value;
-                };
-            }
-        }
-    })();
-
-</script>
-        
-</body>
-</html>
+    
+   

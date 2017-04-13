@@ -16,12 +16,26 @@ var stock = angular.module('stockModule',[]);
     stock.component('stockList', {
 
         templateUrl : "/backshop/js/ng-module/stock/stock-list.html",
-        controller:[ '$rootScope' , '$scope' , function($rootScope , $scope){
+        controller:[ '$http' , '$scope' , '$rootScope' , 
+                    function( $http , $scope , $rootScope){
 
             this.openStockEditor = function() {
                 $rootScope.$broadcast('showStockEditor' , true);
             };
 
+            var data = {};
+            var endpoint = "";
+            $http.get( endpoint, {
+                
+            }).then( 
+                function onSuccess(response){
+                
+                
+            }, function onError(response){
+                
+            });
+            
+            /*
             this.items = [];
             var t = {};
             for (var i = 1; i < 8; i++) {
@@ -38,13 +52,14 @@ var stock = angular.module('stockModule',[]);
                 t.image = "/any/img/product-image.png";
                 this.items.push(t);
             }
+            */
         }]
     });
 
     stock.component('stockEditor',{
 
         templateUrl : "/backshop/js/ng-module/stock/stock-editor.html",
-        controller: [ '$rootScope' , '$scope' , function($rootScope , $scope){
+        controller: [ '$rootScope' , '$scope' ,  '$http' , function($rootScope , $scope){
 
             this.closeStockEditor = function() {
                 $rootScope.$broadcast('showStockEditor' , false);

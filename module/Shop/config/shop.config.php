@@ -16,15 +16,15 @@ return array(
             'stock' => array(
                 'type'    => 'Segment',
                 'options' => array(
-                    'route'    => '/stock[/:slug]',
+                    'route'    => '/stock[/:range]',
                     'defaults' => array(
                         'controller' => 'Shop\Controller\Shop',
-                        'action'        => 'stock',
+                        'action'        => 'stocklist',
                     ),
                     'constraints' => array(
-                        'slug'     => '\d{4}',
-                    )
-                ),                
+                        'range' => '\d{1}',
+                    ),
+                ),
             ),
             'shopimage' => array(
                 'type'    => 'Literal',
@@ -44,13 +44,17 @@ return array(
             'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
             'Zend\Log\LoggerAbstractServiceFactory',
         ),
-        'aliases' => array(
-            'translator' => 'MvcTranslator',
-        ),
+        'factories' => array(
+            'Shop\Service\StockService'
+                    => 'Shop\Service\Factory\StockServiceFactory',
+            
+            'Shop\Model\Gateway\StockGateway'
+                    => 'Shop\Model\Factory\StockGatewayFactory',
+        )
     ),
     'controllers' => array(
-        'invokables' => array(
-            'Shop\Controller\Shop' => 'Shop\Controller\ShopController'
+        'factories' => array(
+            'Shop\Controller\Shop' => 'Shop\Controller\ShopControllerFactory'
         ),
     ),
     'view_manager' => array(
@@ -59,17 +63,18 @@ return array(
         'doctype'                  => 'HTML5',
         'not_found_template'       => 'error/404',
         'exception_template'       => 'error/index',
-        'template_map' => array(
-            'shop/shop/home'      => __DIR__ . '/../view/shop/backshop.html',
-            //'layout/layout'         => __DIR__ . '/../view/shop/base.phtml',
+        'template_map' => array(            
             'error/404'             => __DIR__ . '/../view/error/404.phtml',
             'error/index'           => __DIR__ . '/../view/error/index.phtml',
+            
+            'layout/layout'         => __DIR__ . '/../view/layout/layout.phtml',            
+            'shop/shop/home'      => __DIR__ . '/../view/shop/backshop.html',
         ),
         'template_path_stack' => array(
             __DIR__ . '/../view',
         ),
         'strategies' => array(
-            'ViewJsonStrategy'
+            'ViewJsonStrategy',
         )
     )
 );

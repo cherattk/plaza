@@ -31,12 +31,6 @@ class VitrineController extends AbstractActionController
             $this->ProductService = $ProductService;
     }
     
-    public function onDispatch(\Zend\Mvc\MvcEvent $e)
-    {       
-        $this->authCookie = 'hi im cookie';
-        
-        return parent::onDispatch($e);
-    }
     /////////////////////////////////////////////////////////////////////
     
     public function testAction()
@@ -81,14 +75,14 @@ class VitrineController extends AbstractActionController
     
     /////////////////////////////////////////////////////////////////////
     
-    public function getShopService()
+    public function ShopService()
     {
         return $this->ShopService;
     }
     
     /////////////////////////////////////////////////////////////////////
     
-    public function getProductService()
+    public function ProductService()
     {
         return $this->ProductService;
     }    
@@ -105,7 +99,7 @@ class VitrineController extends AbstractActionController
         $this->appendHeadScript(['https://cdn.jsdelivr.net/jquery.slick/1.5.7/slick.min.js']);
         
         
-        $itemList = $this->getProductService()->getList();
+        $itemList = $this->ProductService()->getList();
         
         return new ViewModel([
                 'items'     => $itemList
@@ -120,10 +114,10 @@ class VitrineController extends AbstractActionController
         $this->appendCss(['shop.css' , 'product.css']);
         
         $shopid = 1234;
-        $shop = $this->getShopService()->getShop($shopid);
+        $shop = $this->ShopService()->getShop($shopid);
         
         $itemId = 1234;
-        $item = $this->getProductService()->getProduct($itemId);
+        $item = $this->ProductService()->getProduct($itemId);
         
         return new ViewModel([
             'shop' => $shop,
@@ -145,9 +139,9 @@ class VitrineController extends AbstractActionController
         ]);
         
         $shopId = 1234;
-        $shop = $this->getShopService()->getShop($shopId);
+        $shop = $this->ShopService()->getShop($shopId);
         
-        $itemList = $this->getProductService()->getList();
+        $itemList = $this->ProductService()->getList();
         
         return new ViewModel( [
             'shop'      => $shop,
