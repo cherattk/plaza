@@ -89,7 +89,8 @@ return array(
             'error/404'             => __DIR__ . '/../view/error/404.phtml',
             'error/index'           => __DIR__ . '/../view/error/index.phtml',
             
-            'layout/layout'         => __DIR__ . '/../view/layout/base.phtml',
+            // managed by EdpModuleLayouts
+            //'layout/layout'         => __DIR__ . '/../view/layout/vitrine-base.phtml',
             'vitrine/vitrine/welcome'      => __DIR__ . '/../view/welcome.phtml',
             'vitrine/vitrine/shop'      => __DIR__ . '/../view/shop.phtml',
             'vitrine/vitrine/product'      => __DIR__ . '/../view/product.phtml',

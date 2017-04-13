@@ -37,6 +37,16 @@ return array(
                     )
                 ),                
             ),
+            'shoplogin' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route'    => '/backshop/login',
+                    'defaults' => array(
+                        'controller' => 'Shop\Controller\Shop',
+                        'action'        => 'login',
+                    )
+                )
+            )
         ),
     ),
     'service_manager' => array(
@@ -67,8 +77,10 @@ return array(
             'error/404'             => __DIR__ . '/../view/error/404.phtml',
             'error/index'           => __DIR__ . '/../view/error/index.phtml',
             
-            'layout/layout'         => __DIR__ . '/../view/layout/layout.phtml',            
+            // managed by EdpModuleLayouts
+            //'layout/layout'         => __DIR__ . '/../view/layout/layout.phtml',            
             'shop/shop/home'      => __DIR__ . '/../view/shop/backshop.html',
+            'shop/shop/login'      => __DIR__ . '/../view/shop/login.phtml',
         ),
         'template_path_stack' => array(
             __DIR__ . '/../view',

@@ -24,12 +24,17 @@ var stock = angular.module('stockModule',[]);
             };
 
             var data = {};
-            var endpoint = "";
-            $http.get( endpoint, {
+            var endpoint = "/stock/2";
+            $http({
+                method : "GET",
+                url : endpoint,
+                responseType : 'JSON',
+                headers: {
+                    'Accept' : 'application/json'
+                }
                 
             }).then( 
                 function onSuccess(response){
-                
                 
             }, function onError(response){
                 

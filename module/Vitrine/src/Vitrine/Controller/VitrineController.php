@@ -31,6 +31,23 @@ class VitrineController extends AbstractActionController
             $this->ProductService = $ProductService;
     }
     
+    
+    public function onDispatch(\Zend\Mvc\MvcEvent $e)
+    {
+        $connected = false;
+        
+        $layout = $e->getViewModel();
+        
+        if(!$connected){
+            $login = new \Zend\View\Model\ViewModel();
+            $login->setTemplate('login.phtml');        
+            $layout->addChild($login, 'loginbox');
+        }
+        
+        $layout->setVariable('isConnected', $connected);
+        return parent::onDispatch($e);
+    }
+    
     /////////////////////////////////////////////////////////////////////
     
     public function testAction()

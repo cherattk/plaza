@@ -19,6 +19,16 @@ class ShopController extends AbstractActionController
             $this->StockService = $StockService;
     }
     
+    public function onDispatch(\Zend\Mvc\MvcEvent $e) 
+    {
+        $connected = true;
+        
+        if(!$connected && 'shoplogin' !== $e->getRouteMatch()->getMatchedRouteName()){
+            $this->redirect()->toRoute('shoplogin');
+        }
+        return parent::onDispatch($e);
+    }
+    
     public function StockService()
     {
         return $this->StockService;
@@ -31,16 +41,19 @@ class ShopController extends AbstractActionController
         return $view;
     }
     
+    public function loginAction()
+    {
+        $view = new ViewModel();
+        $view->setTerminal(true);
+        return $view;
+    }
+    
     public function stocklistAction()
     {
         // without accept header
         $jsonData = new JsonModel(array(
             'list' => $this->StockService()->getList()
         ));
-        
-        $view = new ViewModel(
-                array('loginbox' => null));
-        $view->setTerminal(true);
         
         return $jsonData;
     }
