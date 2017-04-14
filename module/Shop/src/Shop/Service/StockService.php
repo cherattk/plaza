@@ -19,8 +19,8 @@ class StockService implements StockInterface
             $stock[$i]['name'] = "Short product name";
             $stock[$i]['price'] = 13.55;
             $stock[$i]['pricepromo'] = 10.5;
-            $stock[$i]['qte'] = 10;
-            $stock[$i]['qtemini'] = 5;
+            $stock[$i]['quantity'] = 10;
+            $stock[$i]['quantity_mini'] = 5;
             $stock[$i]['image'] = '/any/img/product-image.png';
         }
         

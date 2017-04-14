@@ -67,12 +67,12 @@
                         <div class="imgdiv"><img ng-src="{{ item.image }}"/></div>
                     </td>
                     <td>{{ item.name }}</td>
-                    <td>{{ item.qtedispo }}</td>
-                    <td>{{ item.qtemini }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.quantity_mini }}</td>
                     <td>{{ item.price }}</td>
                     <td>{{ item.pricepromo }}</td>
                     <td>
-                        <div class="itemctrl" data-itemid="{{item.itemid}}">
+                        <div class="itemctrl" data-itemid="{{item.id}}">
                             <label ng-click="$ctrl.openStockEditor()">details</label>
                             <!--<label data-action="edititem" class="getitem">Editer</label>-->
                             <!--<label data-action="seeitem">Voir</label>-->

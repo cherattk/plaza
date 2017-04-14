@@ -4,6 +4,7 @@ namespace Vitrine\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Zend\Session\Container;
 
 use Vitrine\Service\ShopService;
 use Vitrine\Service\ProductService;
@@ -17,8 +18,6 @@ class VitrineController extends AbstractActionController
     private $ShopService ;
     
     private $ProductService ;
-    
-    private $authCookie = null;
     
     /////////////////////////////////////////////////////////////////////
     
@@ -51,8 +50,8 @@ class VitrineController extends AbstractActionController
     /////////////////////////////////////////////////////////////////////
     
     public function testAction()
-    {
-        $data = '';
+    {        
+        $data = "";
         return new ViewModel([
             'data' => $data
         ]);

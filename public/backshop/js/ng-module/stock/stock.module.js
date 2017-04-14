@@ -23,6 +23,7 @@ var stock = angular.module('stockModule',[]);
                 $rootScope.$broadcast('showStockEditor' , true);
             };
 
+            var that = this;
             var data = {};
             var endpoint = "/stock/2";
             $http({
@@ -36,28 +37,23 @@ var stock = angular.module('stockModule',[]);
             }).then( 
                 function onSuccess(response){
                 
+                /*****************************
+                 var item = {
+                            id : "p123",
+                            name:"chemise",
+                            price:12.5,
+                            pricepromo:10.5,
+                            quantity:20,
+                            quantity_mini:10,
+                        }
+                *****************************/
+               
+                that.items = response.data.list;
+                
+                
             }, function onError(response){
                 
             });
-            
-            /*
-            this.items = [];
-            var t = {};
-            for (var i = 1; i < 8; i++) {
-                t = {
-                    id : "p123",
-                    name:"chemise",
-                    price:12.5,
-                    pricepromo:10.5,
-                    qtedispo:20,
-                    qtemini:10,
-
-                };
-
-                t.image = "/any/img/product-image.png";
-                this.items.push(t);
-            }
-            */
         }]
     });
 
