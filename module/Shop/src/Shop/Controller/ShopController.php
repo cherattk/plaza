@@ -16,7 +16,7 @@ class ShopController extends AbstractActionController
             StockService $StockService
             )
     {
-            $this->StockService = $StockService;
+        $this->StockService = $StockService;
     }
     
     public function onDispatch(\Zend\Mvc\MvcEvent $e) 
@@ -46,6 +46,16 @@ class ShopController extends AbstractActionController
         $view = new ViewModel();
         $view->setTerminal(true);
         return $view;
+    }
+    
+    public function itemAction()
+    {
+        // without accept header
+        $jsonData = new JsonModel(array(
+            'item' => $this->StockService()->getItem()
+        ));
+        
+        return $jsonData;
     }
     
     public function stocklistAction()

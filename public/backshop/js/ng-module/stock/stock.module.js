@@ -3,12 +3,12 @@ var stock = angular.module('stockModule',[]);
     stock.controller('stockController' ,
                     [ '$rootScope' , '$scope' , function( $rootScope , $scope){
 
-
-
-        $rootScope.$on('showStockEditor', function(e , arg){
-            $scope.showStockEditor = arg;
+        // listen to event(showStockEditor)
+        $rootScope.$on('getItemDetails', function(e , itemID){
+            $scope.showStockEditor = !!itemID;
         });
 
+        // initial state
         $scope.showStockEditor = false;
 
     }]);
@@ -19,35 +19,26 @@ var stock = angular.module('stockModule',[]);
         controller:[ '$http' , '$scope' , '$rootScope' , 
                     function( $http , $scope , $rootScope){
 
-            this.openStockEditor = function() {
-                $rootScope.$broadcast('showStockEditor' , true);
+            this.getItemDetails = function(itemID) {                
+                $rootScope.$broadcast('getItemDetails' , itemID);
             };
 
             var that = this;
-            var data = {};
-            var endpoint = "/stock/2";
+            var range = 1;
+            var endpoint = "/stock/" + range;
             $http({
                 method : "GET",
                 url : endpoint,
-                responseType : 'JSON',
                 headers: {
                     'Accept' : 'application/json'
                 }
                 
-            }).then( 
+            }).then(
                 function onSuccess(response){
                 
-                /*****************************
-                 var item = {
-                            id : "p123",
-                            name:"chemise",
-                            price:12.5,
-                            pricepromo:10.5,
-                            quantity:20,
-                            quantity_mini:10,
-                        }
-                *****************************/
-               
+                /************************************************************************
+                array of { id , name_short , price, pricepromo , quantity , quantity_mini }
+                *************************************************************************/               
                 that.items = response.data.list;
                 
                 
@@ -60,27 +51,48 @@ var stock = angular.module('stockModule',[]);
     stock.component('stockEditor',{
 
         templateUrl : "/backshop/js/ng-module/stock/stock-editor.html",
-        controller: [ '$rootScope' , '$scope' ,  '$http' , function($rootScope , $scope){
-
-            this.closeStockEditor = function() {
-                $rootScope.$broadcast('showStockEditor' , false);
+        controller: [ '$http' , '$scope' , '$rootScope' , 
+                    function( $http , $scope , $rootScope){
+                       
+            var that = this;
+            
+            this.closeStockEditor = function() {                        
+                $rootScope.$broadcast('getItemDetails' , 0);
             };
 
-            this.item = {
-                id : "p001",
-                name : "chemise super cool taille M",
-                price : 17,
-                promoprice : 13.5,
-                description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
-                                Phasellus vulputate sed enim a interdum. \
-                                Cras tempus sapien in tristique porta.\
-                                Morbi egestas auctor pretium. Curabitur sed ligula ornare, posuere lorem non, pretium mauris. Aliquam et tincidunt ligula. In orci neque, porttitor vitae maximus a, auctor eget justo.",
-                image : []
-            };
-
-            for (var i = 0 ; i < 6 ; i++) {
-                this.item.image[i] = "/any/img/product-image.png";
+            // listen to event(showStockEditor)
+            $rootScope.$on('getItemDetails', function(e , itemID){
+                fetchItemDetails(itemID);
+                $scope.showStockEditor = !!itemID;
+            });
+        
+            
+            var fetchItemDetails = function(id){
                 
-            }
+                if(!id){
+                    that.item = { id : "", name : "" , price : "", 
+                                    price_promo : "", description : "", image : []
+                                  };
+                    return;
+                }
+                else{
+                    var endpoint = "/stock/item/" + id;
+                    $http({
+                        method : "GET",
+                        url : endpoint,
+                        headers: { 'Accept' : 'application/json' }
+
+                    }).then(function onSuccess(response){
+                        /**********************************************
+                       item = { id, name , price, price_promo, description , image : [] }
+                        ***********************************************/
+                        that.item = response.data.item;
+
+
+                    }, function onError(response){
+
+                    });          
+                }
+            };
         }]
     });

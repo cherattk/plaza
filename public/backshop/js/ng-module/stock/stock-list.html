@@ -70,10 +70,10 @@
                     <td>{{ item.quantity }}</td>
                     <td>{{ item.quantity_mini }}</td>
                     <td>{{ item.price }}</td>
-                    <td>{{ item.pricepromo }}</td>
+                    <td>{{ item.price_promo }}</td>
                     <td>
-                        <div class="itemctrl" data-itemid="{{item.id}}">
-                            <label ng-click="$ctrl.openStockEditor()">details</label>
+                        <div class="itemctrl">
+                            <label ng-click="$ctrl.getItemDetails(item.id)">details</label>
                             <!--<label data-action="edititem" class="getitem">Editer</label>-->
                             <!--<label data-action="seeitem">Voir</label>-->
                             <!--<label data-action="removeitem" class="delitem">Supprimer</label>-->
@@ -84,4 +84,5 @@
 
         </table>
     </div>
+    
 </div>

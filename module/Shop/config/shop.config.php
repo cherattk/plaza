@@ -26,6 +26,19 @@ return array(
                     ),
                 ),
             ),
+            'item' => array(
+                'type'    => 'Segment',
+                'options' => array(
+                    'route'    => '/stock/item/:id',
+                    'defaults' => array(
+                        'controller' => 'Shop\Controller\Shop',
+                        'action'        => 'item',
+                    ),
+                    'constraints' => array(
+                        'id' => '\d{4}',
+                    ),
+                ),
+            ),
             'shopimage' => array(
                 'type'    => 'Literal',
                 'options' => array(
