@@ -1,6 +1,6 @@
 angular.module('backShop',[
     'stockModule',
-    'vitrineModule',
+    'shopProfilModule',
     'uikit',
     //'ngCookies'
 ]);

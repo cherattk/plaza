@@ -13,6 +13,16 @@ return array(
                     ),                    
                 ),
             ),
+            'profil' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route'    => '/shop/profil',
+                    'defaults' => array(
+                        'controller' => 'Shop\Controller\Shop',
+                        'action'     => 'profil',
+                    ),                    
+                ),
+            ),
             'stock' => array(
                 'type'    => 'Segment',
                 'options' => array(
@@ -32,7 +42,7 @@ return array(
                     'route'    => '/stock/item/:id',
                     'defaults' => array(
                         'controller' => 'Shop\Controller\Shop',
-                        'action'        => 'item',
+                        'action' => 'item'
                     ),
                     'constraints' => array(
                         'id' => '\d{4}',
@@ -63,11 +73,11 @@ return array(
         ),
     ),
     'service_manager' => array(
-        'abstract_factories' => array(
-            'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
-            'Zend\Log\LoggerAbstractServiceFactory',
-        ),
+        
         'factories' => array(
+            'Shop\Service\ProfilService'
+                    => 'Shop\Service\Factory\ProfilServiceFactory',
+            
             'Shop\Service\StockService'
                     => 'Shop\Service\Factory\StockServiceFactory',
             
@@ -86,20 +96,22 @@ return array(
         'doctype'                  => 'HTML5',
         'not_found_template'       => 'error/404',
         'exception_template'       => 'error/index',
-        'template_map' => array(            
+        'template_map' => array(
+            
             'error/404'             => __DIR__ . '/../view/error/404.phtml',
-            'error/index'           => __DIR__ . '/../view/error/index.phtml',
+            'error/index'           => __DIR__ . '/../view/error/index.phtml',           
             
             // managed by EdpModuleLayouts
-            //'layout/layout'         => __DIR__ . '/../view/layout/layout.phtml',            
+            'layout/layout'         => __DIR__ . '/../view/layout/shop-base.phtml',
+            
             'shop/shop/home'      => __DIR__ . '/../view/shop/backshop.html',
             'shop/shop/login'      => __DIR__ . '/../view/shop/login.phtml',
         ),
         'template_path_stack' => array(
             __DIR__ . '/../view',
         ),
-        'strategies' => array(
-            'ViewJsonStrategy',
+        "strategies" => array(
+            "ViewJsonStrategy"
         )
     )
 );

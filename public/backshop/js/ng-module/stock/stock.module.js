@@ -3,13 +3,15 @@ var stock = angular.module('stockModule',[]);
     stock.controller('stockController' ,
                     [ '$rootScope' , '$scope' , function( $rootScope , $scope){
 
-        // listen to event(showStockEditor)
-        $rootScope.$on('getItemDetails', function(e , itemID){
-            $scope.showStockEditor = !!itemID;
-        });
-
         // initial state
         $scope.showStockEditor = false;
+        
+        // listen to event
+        $rootScope.$on('showStockEditor', function(e , state){
+            $scope.showStockEditor = state;
+        });
+
+        
 
     }]);
 
@@ -19,8 +21,8 @@ var stock = angular.module('stockModule',[]);
         controller:[ '$http' , '$scope' , '$rootScope' , 
                     function( $http , $scope , $rootScope){
 
-            this.getItemDetails = function(itemID) {                
-                $rootScope.$broadcast('getItemDetails' , itemID);
+            this.getItemDetails = function(itemID) {
+                $rootScope.$broadcast('getItemDetails' , itemID);                
             };
 
             var that = this;
@@ -30,7 +32,9 @@ var stock = angular.module('stockModule',[]);
                 method : "GET",
                 url : endpoint,
                 headers: {
-                    'Accept' : 'application/json'
+                        "Cache-Control" : "no-cache",
+                    'Accept' : 'application/json',
+//                    "X-Requested-With": "XMLHttpRequest"
                 }
                 
             }).then(
@@ -53,34 +57,36 @@ var stock = angular.module('stockModule',[]);
         templateUrl : "/backshop/js/ng-module/stock/stock-editor.html",
         controller: [ '$http' , '$scope' , '$rootScope' , 
                     function( $http , $scope , $rootScope){
-                       
-            var that = this;
             
-            this.closeStockEditor = function() {                        
-                $rootScope.$broadcast('getItemDetails' , 0);
+             var that = this;
+             
+            this.closeStockEditor = function() {
+                itemEditor(0);                
             };
-
-            // listen to event(showStockEditor)
-            $rootScope.$on('getItemDetails', function(e , itemID){
-                fetchItemDetails(itemID);
-                $scope.showStockEditor = !!itemID;
-            });
-        
             
-            var fetchItemDetails = function(id){
+            $rootScope.$on('getItemDetails', function(e , itemID){
+                itemEditor(itemID);
+            });
+            
+            var itemEditor = function(id){
+                
+                var state = !!id;
                 
                 if(!id){
-                    that.item = { id : "", name : "" , price : "", 
+                    that.item =  { id : "", name : "" , price : "", 
                                     price_promo : "", description : "", image : []
-                                  };
-                    return;
+                                 };
                 }
                 else{
+                    //var endpoint = "/stock/item/" + id + "?XDEBUG_SESSION_START=netbeans-xdebug";
                     var endpoint = "/stock/item/" + id;
                     $http({
                         method : "GET",
                         url : endpoint,
-                        headers: { 'Accept' : 'application/json' }
+                        headers: { 
+                            "Accept" : "application/json",
+                            "X-Requested-With": "XMLHttpRequest"
+                        }
 
                     }).then(function onSuccess(response){
                         /**********************************************
@@ -88,11 +94,12 @@ var stock = angular.module('stockModule',[]);
                         ***********************************************/
                         that.item = response.data.item;
 
-
                     }, function onError(response){
 
-                    });          
+                    });
                 }
+                
+                $rootScope.$broadcast('showStockEditor' , state);
             };
         }]
     });

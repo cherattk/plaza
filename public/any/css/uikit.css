@@ -129,8 +129,9 @@ textarea{
     font-size:16px;
     padding:8px 5px;
     margin:0 0 20px 0;
-    border: 2px solid #c7d1ec;
+    border:1px solid #aaa;
     outline:transparent solid 0;
+    background:#fafafa;
 }
 .txt:focus{
 	border-color: #87a2d8;

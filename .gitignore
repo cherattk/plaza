@@ -2,11 +2,11 @@
 /vendor/
 /data/
 /config/
-/module/Vitrine/test/
 /public/dev/
 /public/imagehost
 /public/index.php
 /public/.htaccess
 /init_autoloader.php
-/module/Vitrine/view/test/
 /todo/
+/test/
+/module/Visitor/view/dev/
