@@ -12,7 +12,7 @@ Ecommerce plateform based on ZF2 MVC layer and module systems.
 
 ``` php 
     'modules' => array(
-        'Vitrine', // add this
+        'Visitor', // add this
         'Shop', // add this
     ),
 ```
@@ -34,6 +34,11 @@ return array(
                      => 'Zend\Db\Adapter\AdapterServiceFactory',
          ),
      ),
+    // used by EdpModuleLayouts module
+    'module_layouts' => array(
+        'Shop' => 'layout/shop-base',
+        'Visitor' => 'layout/visitor-base',
+    ),
 );
 ```
 ##### Screenshot of Shop Page 
