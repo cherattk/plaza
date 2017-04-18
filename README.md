@@ -6,7 +6,8 @@ Ecommerce plateform based on ZF2 MVC layer and module systems.
 1 - Make a fresh installation of 
     [ZendSkeletonApplication 2.4](https://github.com/zendframework/ZendSkeletonApplication/blob/release-2.4/README.md) 
 
-2 - Dowload /plaza-dev/ and Copy the content of /plaza-dev/module/* and  /plaza-dev/public/* in /module/ and /public/ folders of the sketeleon
+2 - A) - Dowload /plaza-dev/ and Copy the content of /plaza-dev/module/* and  /plaza-dev/public/* in /module/ and /public/ folders of the skeleton
+2 - B) - Install [EdpModuleLayouts] (https://github.com/EvanDotPro/EdpModuleLayouts)
 
 ##### 3 - add to config/application.config.php
 
@@ -14,6 +15,10 @@ Ecommerce plateform based on ZF2 MVC layer and module systems.
     'modules' => array(
         'Visitor', // add this
         'Shop', // add this
+        'Authenticator', // add this
+        // To set different layout for  each module
+        // https://github.com/EvanDotPro/EdpModuleLayouts
+        'EdpModuleLayouts'
     ),
 ```
 
@@ -34,7 +39,7 @@ return array(
                      => 'Zend\Db\Adapter\AdapterServiceFactory',
          ),
      ),
-    // used by EdpModuleLayouts module
+    // Config EdpModuleLayouts module
     'module_layouts' => array(
         'Shop' => 'layout/shop-base',
         'Visitor' => 'layout/visitor-base',
