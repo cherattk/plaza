@@ -3,6 +3,8 @@
 return array(
     'router' => array(
         'routes' => array(
+            
+            // --------------- User Interface --------------//
             'backshop' => array(
                 'type' => 'Literal',
                 'options' => array(
@@ -13,53 +15,6 @@ return array(
                     ),                    
                 ),
             ),
-            'profil' => array(
-                'type' => 'Literal',
-                'options' => array(
-                    'route'    => '/shop/profil',
-                    'defaults' => array(
-                        'controller' => 'Shop\Controller\Shop',
-                        'action'     => 'profil',
-                    ),                    
-                ),
-            ),
-            'stock' => array(
-                'type'    => 'Segment',
-                'options' => array(
-                    'route'    => '/stock[/:range]',
-                    'defaults' => array(
-                        'controller' => 'Shop\Controller\Shop',
-                        'action'        => 'stocklist',
-                    ),
-                    'constraints' => array(
-                        'range' => '\d{1}',
-                    ),
-                ),
-            ),
-            'item' => array(
-                'type'    => 'Segment',
-                'options' => array(
-                    'route'    => '/stock/item/:id',
-                    'defaults' => array(
-                        'controller' => 'Shop\Controller\Shop',
-                        'action' => 'item'
-                    ),
-                    'constraints' => array(
-                        'id' => '\d{4}',
-                    ),
-                ),
-            ),
-            'shopimage' => array(
-                'type'    => 'Literal',
-                'options' => array(
-                    'route'    => '/backshop/image',
-                    'verb' => 'post',
-                    'defaults' => array(
-                        'controller' => 'Shop\Controller\Shop',
-                        'action'        => 'image',
-                    )
-                ),                
-            ),
             'shoplogin' => array(
                 'type' => 'Literal',
                 'options' => array(
@@ -69,7 +24,47 @@ return array(
                         'action'        => 'login',
                     )
                 )
-            )
+            ),
+            //------------------ API Stock  ---------------------//
+            'stock' => array(
+                'type'    => 'Segment',
+                'options' => array(
+                    'route'    => '/backshop/stock[/:id]',
+                    'defaults' => array(
+                        'controller' => 'Shop\Controller\Stock',
+                        'action' => 'index'
+                    ),
+                    'constraints' => array(
+                        'id' => '\d{4}',
+                    ),
+                ),
+            ),
+            
+            //--------------  API PROFIL --------------------//
+//            'profil' => array(
+//                'type' => 'Segment',
+//                'options' => array(
+//                    'route'    => '/backshop/profil',
+//                    'defaults' => array(
+//                        'controller' => 'Shop\Controller\Profil',
+//                        'action' => 'index'
+//                    )
+//                ),
+//            ),
+//            'profilimage' => array(
+//                'type'    => 'Literal',
+//                'options' => array(
+//                    'route'    => '/backshop/profil/image',
+//                    'verb' => 'post',
+//                    'defaults' => array(
+//                        'controller' => 'Shop\Controller\Profil',
+//                        //'action'        => 'image',
+//                    )
+//                ),                
+//            ),
+            
+            
+            
         ),
     ),
     'service_manager' => array(
@@ -86,9 +81,18 @@ return array(
         )
     ),
     'controllers' => array(
+        
         'factories' => array(
-            'Shop\Controller\Shop' => 'Shop\Controller\ShopControllerFactory'
+            'Shop\Controller\Profil'
+                        => 'Shop\Controller\Factory\ProfilControllerFactory',
+
+            'Shop\Controller\Stock' 
+                        => 'Shop\Controller\Factory\StockControllerFactory', 
         ),
+        
+        "invokables" => array(
+            'Shop\Controller\Shop' => 'Shop\Controller\ShopController'
+        )
     ),
     'view_manager' => array(
         'display_not_found_reason' => true,

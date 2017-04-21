@@ -4,5 +4,6 @@ namespace Shop\Service\ServiceInterface;
 
 interface StockInterface
 {
-    public function getList($filter , $range);
+    public function fetchList($filter , $range);
+    public function fetchItem($id);
 }

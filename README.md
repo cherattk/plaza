@@ -16,7 +16,7 @@ Ecommerce plateform based on ZF2 MVC layer and module systems.
     'modules' => array(
         'Visitor',
         'Shop',
-        'Authenticator',
+        'Authentication',
         'EdpModuleLayouts'
     ),
 ```

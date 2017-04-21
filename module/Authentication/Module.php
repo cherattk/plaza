@@ -1,6 +1,6 @@
 <?php
 
-namespace Authenticator;
+namespace Authentication;
 
 use Zend\Mvc\MvcEvent;
 

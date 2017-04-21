@@ -2,12 +2,10 @@
 
 namespace Shop\Service;
 
-use Shop\Service\ServiceInterface\StockInterface;
-
-class StockService implements StockInterface
+class StockService
 {
     
-    public function getItem()
+    public function fetchItem()
     {
         // DUMMY DATA : ITEM //
         $productId = "1234";
@@ -31,7 +29,7 @@ class StockService implements StockInterface
     }
     
     
-    public function getList($filter = null, $range = 0) 
+    public function fetchList($filter = null, $range = 0) 
     {
         // DUMMY DATA: PRODUCT LIST //
         $productId = "1234";
