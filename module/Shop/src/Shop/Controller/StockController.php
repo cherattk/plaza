@@ -14,49 +14,65 @@ class StockController extends AbstractActionController
         $this->StockService = $StockService;
     }
     
-    protected function StockService()
+    public function onDispatch(\Zend\Mvc\MvcEvent $e)
+    {
+        $allowedMethod = ['GET' , 'POST' , 'PUT' , 'DELETE'];
+        
+        $requestMethod = $e->getRequest()->getMethod();
+
+        if(!in_array($requestMethod, $allowedMethod)){
+
+            $response = $this->getResponse();
+            $response->setStatusCode(405);
+            $response->setContent('Method Not Allowed');
+            return $response;
+        }            
+        parent::onDispatch($e);
+    }
+    
+    protected function getStockService()
     {
         return $this->StockService;
     }
     
     public function indexAction()
-    {
-        $response = ['stock' => 'not found'];
-        
+    {        
         $id = $this->params()->fromRoute('id');
+        $requestMethod = $this->getRequest()->getMethod();
         
         if($id){
-            $response = $this->processItem($id);
+            $response = $this->processItem($id , $requestMethod);
         }
-        else{
-            $response = $this->searchStock();
-        }
-        
-        return new JsonModel($response);
+        else if($requestMethod === "GET"){
+            $filter = $this->params()->fromQuery('filter');
+            $response = $this->searchInStock($filter);
+        }        
+        return $response;
     }
     
-    public function searchStock()
+    
+    /**
+     * @param array $filter
+     * @return JsonModel
+     */
+    public function searchInStock($filter)
     {
-        $query = $this->params()->fromQuery('filter');
-        //
-        $request = $this->request;
-        $query = $request->getQuery();
-        $filter = $query['filter'];
-        
-        $list = $this->StockService()->fetchList();
-        return [
+        return new JsonModel([
             'list' => 'list data'
-        ];
+        ]);
         
     }
     
-    public function processItem($id)
-    {
-        $verb = $this->getRequest()->getMethod();
-        
-        $response = [];
-        
-        switch ($verb) {
+    
+    /**
+     * @param string $id , item identifier
+     * @param string $method , request method
+     * 
+     * @return JsonModel
+     */
+    public function processItem($id , $method)
+    {        
+        switch ($method) {
             case 'GET' :
                 $response = $this->getItem($id);
                 break;
@@ -74,51 +90,51 @@ class StockController extends AbstractActionController
                 break;
             
             default:
-                //$this->methodeNotAllowed();
+                $response = new JsonModel(['item' => 'method-not-allowed']);
                 break;
         }
         
         return $response;
     }    
 
+    /**
+     * @param string $id
+     * @return array
+     */
     public function getItem($id)
     {
-        // DUMMY DATA : ITEM //
-        $productId = "1234";
-        $item = [
-            "id" => $productId,
-            "name" => "Short product Name",
-            "description" => "Product description",
-            "price" => 13.55,
-            "price_promo" => 10,
-            "quantity" => 10,
-            "quantity_mini" => 10,
-            "image" => [],
-        ];
+        $item = $this->getStockService()->fetchItem($id);
         
-        for($i = 0 ; $i < 6 ; $i++){
-            $item['image'][] = "/any/img/product-image.png";
-        }
-        
-        return [
-            'item' => $item
-        ];
+        return new JsonModel(['item' => $item ]);
     }
     
+    
+    /**
+     * @return array
+     */
     public function createItem()
     {        
-        return [
-            'item' => 'create item'
-        ];
+        return new JsonModel(['item' => 'create-item']);
     }
+    
+    
+    /** 
+     * @param string $id
+     * @return array
+     */
     
     public function updateItem($id)
     {
-        return ['update' => 'update item'];
+        return array('update' => 'update-item');
     }
     
+    
+    /**
+     * @param string $id
+     * @return Array
+     */
     public function deleteItem($id)
     {
-        return ['update' => 'delete item'];
+        return array('update' => 'delete-item');
     }
 }

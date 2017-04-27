@@ -5,20 +5,20 @@ return array(
         'routes' => array(
             
             // --------------- User Interface --------------//
-            'backshop' => array(
+            'home' => array(
                 'type' => 'Literal',
                 'options' => array(
-                    'route'    => '/backshop',
+                    'route'    => '/',
                     'defaults' => array(
                         'controller' => 'Shop\Controller\Shop',
                         'action'     => 'home',
                     ),                    
                 ),
             ),
-            'shoplogin' => array(
+            'login' => array(
                 'type' => 'Literal',
                 'options' => array(
-                    'route'    => '/backshop/login',
+                    'route'    => '/login',
                     'defaults' => array(
                         'controller' => 'Shop\Controller\Shop',
                         'action'        => 'login',
@@ -29,7 +29,7 @@ return array(
             'stock' => array(
                 'type'    => 'Segment',
                 'options' => array(
-                    'route'    => '/backshop/stock[/:id]',
+                    'route'    => '/stock[/:id]',
                     'defaults' => array(
                         'controller' => 'Shop\Controller\Stock',
                         'action' => 'index'
@@ -44,7 +44,7 @@ return array(
 //            'profil' => array(
 //                'type' => 'Segment',
 //                'options' => array(
-//                    'route'    => '/backshop/profil',
+//                    'route'    => '/profil',
 //                    'defaults' => array(
 //                        'controller' => 'Shop\Controller\Profil',
 //                        'action' => 'index'
@@ -54,7 +54,7 @@ return array(
 //            'profilimage' => array(
 //                'type'    => 'Literal',
 //                'options' => array(
-//                    'route'    => '/backshop/profil/image',
+//                    'route'    => '/profil/image',
 //                    'verb' => 'post',
 //                    'defaults' => array(
 //                        'controller' => 'Shop\Controller\Profil',

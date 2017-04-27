@@ -3,16 +3,6 @@
 return array(
     'router' => array(
         'routes' => array(
-            'test' => array(
-                'type' => 'Literal',
-                'options' => array(
-                    'route'    => '/test',
-                    'defaults' => array(
-                        'controller' => 'Visitor\Controller\Visitor',
-                        'action'     => 'test',
-                    ),
-                ),
-            ),
             'home' => array(
                 'type' => 'Literal',
                 'options' => array(
@@ -26,7 +16,7 @@ return array(
             'shop' => array(
                 'type'    => 'Segment',
                 'options' => array(
-                    'route'    => '/shop/:shopid',
+                    'route'    => '/shop/:id',
                     'defaults' => array(
                         'controller' => 'Visitor\Controller\Visitor',
                         'action'        => 'shop',

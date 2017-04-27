@@ -8,5 +8,5 @@
 /public/.htaccess
 /init_autoloader.php
 /todo/
-/test/
 /module/Visitor/view/dev/
+/module/Shop/test/

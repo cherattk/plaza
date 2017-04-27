@@ -6,11 +6,11 @@ var vitrine = angular.module('shopProfilModule',[]);
         controller:[ '$http' ,  function($http){
 
             this.configSelectFile = {
-                endpoint : "/backshop/image"
+                endpoint : "/profil/image"
             };
             
             var that = this;
-            var endpoint = "/shop/profil";
+            var endpoint = "/profil";
             $http({
                 method : "GET",
                 url : endpoint,

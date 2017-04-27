@@ -5,9 +5,8 @@ namespace Shop\Service;
 class StockService
 {
     
-    public function fetchItem()
+    public function fetchItem($id)
     {
-        // DUMMY DATA : ITEM //
         $productId = "1234";
         $item = [
             "id" => $productId,
