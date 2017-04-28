@@ -8,20 +8,48 @@ Ecommerce plateform based on ZF2 MVC layer and module systems.
 
 2 - A) - Dowload /plaza-dev/ and Copy the content of /plaza-dev/module/* and  /plaza-dev/public/* in /module/ and /public/ folders of the skeleton
 
-2 - B) - Install [EdpModuleLayouts](https://github.com/EvanDotPro/EdpModuleLayouts) : To set different layout for  each module
-
 ##### 3 - add to config/application.config.php
 
 ``` php 
     'modules' => array(
-        'Visitor',
-        'Shop',
-        'Authentication',
-        'EdpModuleLayouts'
+        'Visitor', // add this default module
     ),
 ```
+#### 4 - add to public/index.php
 
-##### 4 - add to config/autoload/global.php this config array
+```
+// require 'init_autoloader.php'
+
+/*************************************************************
+* Code to add
+* this will attach appropriate module depending on subdomain
+* ex :
+* www.hostname.com to access Default Module Vitrine
+* shop.hostname.com will load Shop Module
+*************************************************************/
+
+$AppConfig = require 'config/application.config.php';
+$subdomain = explode('.' , $_SERVER['HTTP_HOST']);
+
+// Setup module by subdomaine
+$moduleBySubDomain = [
+    // 'subdomain' => 'module name'
+    "shop" => 'Shop'
+];
+
+if(count($subdomain) === 3 && isset($moduleBySubDomain[$subdomain[0]])){    
+    // change default module
+    $AppConfig['modules'][0] = $moduleBySubDomain[$subdomain[0]];
+}
+
+// Run the application!
+// Replace `Zend\Mvc\Application::init(require 'config/application.config.php')->run();`
+// By this
+Zend\Mvc\Application::init($AppConfig)->run();
+
+
+```
+##### 5 - add to config/autoload/global.php this config array
 
 ``` php
 return array(
