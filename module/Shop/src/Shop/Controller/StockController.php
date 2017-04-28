@@ -35,19 +35,27 @@ class StockController extends AbstractActionController
         return $this->StockService;
     }
     
+    /**
+     * 
+     * @return JsonModel
+     */
     public function indexAction()
     {        
         $id = $this->params()->fromRoute('id');
         $requestMethod = $this->getRequest()->getMethod();
         
-        if($id){
+        if($id){            
             $response = $this->processItem($id , $requestMethod);
         }
         else if($requestMethod === "GET"){
             $filter = $this->params()->fromQuery('filter');
             $response = $this->searchInStock($filter);
-        }        
-        return $response;
+            
+        }else{
+            $response = new JsonModel(['message' => 'bad request']);
+        }
+        
+        return $response;        
     }
     
     
@@ -74,67 +82,27 @@ class StockController extends AbstractActionController
     {        
         switch ($method) {
             case 'GET' :
-                $response = $this->getItem($id);
+                $response = $this->getStockService()->fetchItem($id);
                 break;
             
             case 'POST' :
-                $response = $this->createItem();
+                $response = $this->getStockService()->createItem();
                 break;
             
             case 'PUT' :
-                $response = $this->updateItem($id);
+                $response = $this->getStockService()->updateItem($id);
                 break;
             
             case 'DELETE' :
-                $response = $this->deleteItem($id);
+                $response = $this->getStockService()->deleteItem($id);
                 break;
             
             default:
-                $response = new JsonModel(['item' => 'method-not-allowed']);
+                $response = ['item' => 'method-not-allowed'] ;
                 break;
         }
         
-        return $response;
+        return new JsonModel($response);
     }    
-
-    /**
-     * @param string $id
-     * @return array
-     */
-    public function getItem($id)
-    {
-        $item = $this->getStockService()->fetchItem($id);
-        
-        return new JsonModel(['item' => $item ]);
-    }
     
-    
-    /**
-     * @return array
-     */
-    public function createItem()
-    {        
-        return new JsonModel(['item' => 'create-item']);
-    }
-    
-    
-    /** 
-     * @param string $id
-     * @return array
-     */
-    
-    public function updateItem($id)
-    {
-        return array('update' => 'update-item');
-    }
-    
-    
-    /**
-     * @param string $id
-     * @return Array
-     */
-    public function deleteItem($id)
-    {
-        return array('update' => 'delete-item');
-    }
 }

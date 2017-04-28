@@ -5,6 +5,11 @@ namespace Shop\Service;
 class StockService
 {
     
+    /**
+     * 
+     * @param string $id
+     * @return array item's data
+     */
     public function fetchItem($id)
     {
         $productId = "1234";
@@ -27,7 +32,12 @@ class StockService
         
     }
     
-    
+    /**
+     * 
+     * @param string $filter
+     * @param integer $range
+     * @return array[] list of item
+     */
     public function fetchList($filter = null, $range = 0) 
     {
         // DUMMY DATA: PRODUCT LIST //
@@ -45,5 +55,36 @@ class StockService
         }
         
         return $stock;
+    }
+    
+    public function createItem()
+    {
+        $productId = "1234";
+        $item = [
+            "id" => $productId,
+            "name" => "Short product Name",
+            "description" => "Product description",
+            "price" => 13.55,
+            "price_promo" => 10,
+            "quantity" => 10,
+            "quantity_mini" => 10,
+            "image" => [],
+        ];
+        
+        for($i = 0 ; $i < 6 ; $i++){
+            $item['image'][] = "/any/img/product-image.png";
+        }
+        
+        return $item;
+    }
+    
+    public function updateItem($id)
+    {
+        
+    }
+    
+    public function deleteItem($id)
+    {
+        
     }
 }
