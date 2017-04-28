@@ -15,9 +15,9 @@ Ecommerce plateform based on ZF2 MVC layer and module systems.
         'Visitor', // add this default module
     ),
 ```
-#### 4 - add to public/index.php
+##### 4 - add to public/index.php
 
-```
+``` php
 // require 'init_autoloader.php'
 
 /*************************************************************
@@ -47,8 +47,8 @@ if(count($subdomain) === 3 && isset($moduleBySubDomain[$subdomain[0]])){
 // By this
 Zend\Mvc\Application::init($AppConfig)->run();
 
-
 ```
+
 ##### 5 - add to config/autoload/global.php this config array
 
 ``` php
