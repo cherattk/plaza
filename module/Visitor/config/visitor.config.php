@@ -76,8 +76,7 @@ return array(
             'error/404'             => __DIR__ . '/../view/error/404.phtml',
             'error/index'           => __DIR__ . '/../view/error/index.phtml',
             
-            // managed by EdpModuleLayouts
-            //'layout/layout'         => __DIR__ . '/../view/layout/visitor-base.phtml',
+            'layout/layout'         => __DIR__ . '/../view/layout/visitor-base.phtml',
             'visitor/visitor/welcome'      => __DIR__ . '/../view/welcome.phtml',
             'visitor/visitor/shop'      => __DIR__ . '/../view/shop.phtml',
             'visitor/visitor/product'      => __DIR__ . '/../view/product.phtml',

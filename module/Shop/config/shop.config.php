@@ -105,9 +105,7 @@ return array(
             'error/404'             => __DIR__ . '/../view/error/404.phtml',
             'error/index'           => __DIR__ . '/../view/error/index.phtml',           
             
-            // managed by EdpModuleLayouts
-            'layout/layout'         => __DIR__ . '/../view/layout/shop-base.phtml',
-            
+            'layout/layout'         => __DIR__ . '/../view/layout/shop-base.phtml',            
             'shop/shop/home'      => __DIR__ . '/../view/shop/backshop.html',
             'shop/shop/login'      => __DIR__ . '/../view/shop/login.phtml',
         ),
