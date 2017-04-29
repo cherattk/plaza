@@ -26,15 +26,14 @@ var stock = angular.module('stockModule',[]);
             };
 
             var that = this;
-            var range = 1;
-            var endpoint = "/stock/" + range;
+            var filter = "filter=rating&range=1";
+            var endpoint = "/stock?" + filter;
             $http({
                 method : "GET",
                 url : endpoint,
-                headers: {
-                        "Cache-Control" : "no-cache",
+                header:{ 
                     'Accept' : 'application/json',
-//                    "X-Requested-With": "XMLHttpRequest"
+                    'X-Requested-With': 'XMLHttpRequest'
                 }
                 
             }).then(
@@ -79,15 +78,14 @@ var stock = angular.module('stockModule',[]);
                 }
                 else{
                     //var endpoint = "/stock/item/" + id + "?XDEBUG_SESSION_START=netbeans-xdebug";
-                    var endpoint = "/stock/item/" + id;
+                    var endpoint = "/stock/" + id;
                     $http({
                         method : "GET",
                         url : endpoint,
-                        headers: { 
-                            "Accept" : "application/json",
-                            "X-Requested-With": "XMLHttpRequest"
+                        header:{ 
+                            'Accept' : 'application/json',
+                            'X-Requested-With': 'XMLHttpRequest'
                         }
-
                     }).then(function onSuccess(response){
                         /**********************************************
                        item = { id, name , price, price_promo, description , image : [] }

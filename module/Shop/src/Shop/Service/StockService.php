@@ -5,6 +5,10 @@ namespace Shop\Service;
 class StockService
 {
     
+    public function __construct() {
+        
+    }
+    
     /**
      * 
      * @param string $id

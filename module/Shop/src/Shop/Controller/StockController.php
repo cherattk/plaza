@@ -48,8 +48,9 @@ class StockController extends AbstractActionController
             $response = $this->processItem($id , $requestMethod);
         }
         else if($requestMethod === "GET"){
-            $filter = $this->params()->fromQuery('filter');
-            $response = $this->searchInStock($filter);
+            
+            $queryParam = $filter = $this->params()->fromQuery();
+            $response = $this->searchInStock($queryParam);
             
         }else{
             $response = new JsonModel(['message' => 'bad request']);
@@ -64,9 +65,11 @@ class StockController extends AbstractActionController
      * @return JsonModel
      */
     public function searchInStock($filter)
-    {
+    {        
+        $list = $this->getStockService()->fetchList();
+        
         return new JsonModel([
-            'list' => 'list data'
+            'list' => $list
         ]);
         
     }
@@ -82,7 +85,8 @@ class StockController extends AbstractActionController
     {        
         switch ($method) {
             case 'GET' :
-                $response = $this->getStockService()->fetchItem($id);
+                $item = $this->getStockService()->fetchItem($id);
+                $response = ['item' => $item];
                 break;
             
             case 'POST' :
@@ -98,7 +102,7 @@ class StockController extends AbstractActionController
                 break;
             
             default:
-                $response = ['item' => 'method-not-allowed'] ;
+                $response = ['message' => 'method-not-allowed'];
                 break;
         }
         
