@@ -1,13 +1,11 @@
 <?php
 
-namespace Shop\Service;
+namespace Shop\Stock\Service;
 
 class StockService
 {
     
-    public function __construct() {
-        
-    }
+    public function __construct() {}
     
     /**
      * 

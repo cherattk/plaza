@@ -10,7 +10,7 @@ return array(
                 'options' => array(
                     'route'    => '/',
                     'defaults' => array(
-                        'controller' => 'Shop\Controller\Shop',
+                        'controller' => 'Shop\Index',
                         'action'     => 'home',
                     ),                    
                 ),
@@ -20,7 +20,7 @@ return array(
                 'options' => array(
                     'route'    => '/login',
                     'defaults' => array(
-                        'controller' => 'Shop\Controller\Shop',
+                        'controller' => 'Shop\Index',
                         'action'        => 'login',
                     )
                 )
@@ -31,7 +31,7 @@ return array(
                 'options' => array(
                     'route'    => '/stock[/:id]',
                     'defaults' => array(
-                        'controller' => 'Shop\Controller\Stock',
+                        'controller' => 'Shop\Stock\Stock',
                         'action' => 'index'
                     ),
                     'constraints' => array(
@@ -41,57 +41,37 @@ return array(
             ),
             
             //--------------  API PROFIL --------------------//
-//            'profil' => array(
-//                'type' => 'Segment',
-//                'options' => array(
-//                    'route'    => '/profil',
-//                    'defaults' => array(
-//                        'controller' => 'Shop\Controller\Profil',
-//                        'action' => 'index'
-//                    )
-//                ),
-//            ),
-//            'profilimage' => array(
-//                'type'    => 'Literal',
-//                'options' => array(
-//                    'route'    => '/profil/image',
-//                    'verb' => 'post',
-//                    'defaults' => array(
-//                        'controller' => 'Shop\Controller\Profil',
-//                        //'action'        => 'image',
-//                    )
-//                ),                
-//            ),
-            
-            
-            
+            'profil' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route'    => '/profil',
+                    'defaults' => array(
+                        'controller' => 'Shop\Profil\Profil',
+                        'action' => 'index'
+                    )
+                ),
+            ),
         ),
     ),
     'service_manager' => array(
         
         'factories' => array(
-            'Shop\Service\ProfilService'
-                    => 'Shop\Service\Factory\ProfilServiceFactory',
+            'Shop\Profil\Service\ProfilService' 
+                        => 'Shop\Profil\Service\ProfilServiceFactory',
             
-            'Shop\Service\StockService'
-                    => 'Shop\Service\Factory\StockServiceFactory',
+            'Shop\Stock\Service\StockService' 
+                        => 'Shop\Stock\Service\StockServiceFactory',
             
-            'Shop\Model\Gateway\StockGateway'
-                    => 'Shop\Model\Factory\StockGatewayFactory',
         )
     ),
-    'controllers' => array(
-        
+    'controllers' => array(        
         'factories' => array(
-            'Shop\Controller\Profil'
-                        => 'Shop\Controller\Factory\ProfilControllerFactory',
+            'Shop\Profil\Profil' => 'Shop\Profil\ProfilControllerFactory',
 
-            'Shop\Controller\Stock' 
-                        => 'Shop\Controller\Factory\StockControllerFactory', 
-        ),
-        
+            'Shop\Stock\Stock' => 'Shop\Stock\StockControllerFactory', 
+        ),        
         "invokables" => array(
-            'Shop\Controller\Shop' => 'Shop\Controller\ShopController'
+            'Shop\Index' => 'Shop\IndexController'
         )
     ),
     'view_manager' => array(
@@ -106,8 +86,8 @@ return array(
             'error/index'           => __DIR__ . '/../view/error/index.phtml',           
             
             'layout/layout'         => __DIR__ . '/../view/layout/shop-base.phtml',            
-            'shop/shop/home'      => __DIR__ . '/../view/shop/backshop.html',
-            'shop/shop/login'      => __DIR__ . '/../view/shop/login.phtml',
+            'shop/index/home'      => __DIR__ . '/../view/shop/backshop.html',
+            'shop/index/login'      => __DIR__ . '/../view/shop/login.phtml',
         ),
         'template_path_stack' => array(
             __DIR__ . '/../view',

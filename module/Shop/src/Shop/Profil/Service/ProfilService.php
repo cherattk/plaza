@@ -1,6 +1,6 @@
 <?php
 
-namespace Shop\Service;
+namespace Shop\Profil\Service;
 
 class ProfilService
 {

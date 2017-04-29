@@ -1,8 +1,8 @@
 <?php
 
-namespace Shop\Service\Factory;
+namespace Shop\Profil\Service;
 
-use Shop\Service\ProfilService;
+use Shop\Profil\Service\ProfilService;
 
 class ProfilServiceFactory
 {

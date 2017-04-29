@@ -66,11 +66,6 @@ return array(
                      => 'Zend\Db\Adapter\AdapterServiceFactory',
          ),
      ),
-    // Config EdpModuleLayouts module
-    'module_layouts' => array(
-        'Shop' => 'layout/shop-base',
-        'Visitor' => 'layout/visitor-base',
-    ),
 );
 ```
 ##### Screenshot of Shop Page 

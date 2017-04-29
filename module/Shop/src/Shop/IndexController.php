@@ -1,11 +1,11 @@
 <?php
 
-namespace Shop\Controller;
+namespace Shop;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
-class ShopController extends AbstractActionController
+class IndexController extends AbstractActionController
 {    
     private $identity = null;
     
@@ -25,9 +25,7 @@ class ShopController extends AbstractActionController
     
     public function homeAction()
     {
-        $view = new ViewModel();
-        //$view->setTerminal(true);
-        return $view;
+        return new ViewModel();
     }
     
     public function loginAction()

@@ -1,6 +1,6 @@
 <?php
 
-namespace Shop\Controller;
+namespace Shop\Stock;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\JsonModel;
@@ -12,22 +12,6 @@ class StockController extends AbstractActionController
     public function __construct($StockService) {
         
         $this->StockService = $StockService;
-    }
-    
-    public function onDispatch(\Zend\Mvc\MvcEvent $e)
-    {
-        $allowedMethod = ['GET' , 'POST' , 'PUT' , 'DELETE'];
-        
-        $requestMethod = $e->getRequest()->getMethod();
-
-        if(!in_array($requestMethod, $allowedMethod)){
-
-            $response = $this->getResponse();
-            $response->setStatusCode(405);
-            $response->setContent('Method Not Allowed');
-            return $response;
-        }            
-        parent::onDispatch($e);
     }
     
     protected function getStockService()

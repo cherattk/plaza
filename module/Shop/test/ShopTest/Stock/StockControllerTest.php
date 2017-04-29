@@ -1,10 +1,10 @@
 <?php
 
-namespace ShopTest\Controller;
+namespace ShopTest\Stock;
 
 use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 
-use Shop\Controller\StockController;
+use Shop\Stock\StockController;
 
 class StokControllerTest extends AbstractHttpControllerTestCase
 {    
@@ -17,7 +17,7 @@ class StokControllerTest extends AbstractHttpControllerTestCase
         $this->setApplicationConfig($config);
         
         $this->traceError = true;
-        $this->mockStockService = $this->getMockBuilder('Shop\Service\StockService')
+        $this->mockStockService = $this->getMockBuilder('Shop\Stock\Service\StockService')
                                     ->disableOriginalConstructor()
                                     ->getMock();
         
@@ -26,15 +26,15 @@ class StokControllerTest extends AbstractHttpControllerTestCase
     
     
     /**
-     * @dataProvider dataTestMethodNotAllowed()
+     * @dataProvider dataForTestMethodNotAllowed()
      */
-    public function testMethodNotAllowed($method)
+    public function testMethodNotAllowed($httpMethod)
     {
-        $this->dispatch('/stock', $method);
+        $this->dispatch('/stock', $httpMethod);
         $this->assertResponseStatusCode(405);
     }
     
-    public function dataTestMethodNotAllowed()
+    public function dataForTestMethodNotAllowed()
     {
         return [
             ['PATCH'] , ['TRACE'] , ['OPTIONS'] , ['CONNECT'] , ['HEAD']
@@ -42,18 +42,18 @@ class StokControllerTest extends AbstractHttpControllerTestCase
     }
     
     /**
-     * @dataProvider dataTestIndexActionCalled()
+     * @dataProvider dataForTestIndexActionCalled()
      */
-    public function testIndexActionCalled($method)
+    public function testIndexActionCalled($httpMethod)
     {        
-        $this->dispatch('/stock', $method);        
+        $this->dispatch('/stock', $httpMethod);        
         $this->assertResponseStatusCode(200);
-        $this->assertControllerName('Shop\Controller\Stock');
+        $this->assertControllerName('Shop\Stock\Stock');
         $this->assertActionName('index');
         
     }
     
-    public function dataTestIndexActionCalled()
+    public function dataForTestIndexActionCalled()
     {
         return [ 
             ['GET'], ['POST'], ['PUT'], ['DELETE']
@@ -82,20 +82,20 @@ class StokControllerTest extends AbstractHttpControllerTestCase
     
     
     /**
-     * @dataProvider dataTestProcessItem()
+     * @dataProvider dataForTestProcessItem()
      */    
-    public function testProcessItem($method)
+    public function testProcessItem($httpMethod)
     {
         $mockStockService = $this->mockStockService;
         
         $ctrl = new StockController($mockStockService);
         
-        $result = $ctrl->processItem(1 , $method);
+        $result = $ctrl->processItem(1 , $httpMethod);
         
         $this->assertInstanceOf('Zend\View\Model\JsonModel' , $result);
     }
     
-    public function dataTestProcessItem()
+    public function dataForTestProcessItem()
     {
         return [
             'get item' => ['GET'] , 
