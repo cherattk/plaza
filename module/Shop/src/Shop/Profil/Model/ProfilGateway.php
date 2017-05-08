@@ -1,12 +1,21 @@
 <?php
 
-namespace Profil\Model;
+namespace Shop\Profil\Model;
 
-/**
- * Description of ProfilGateway
- *
- * @author rimka
- */
-class ProfilGateway {
-    //put your code here
+use Zend\Db\TableGateway\TableGateway;
+
+class ProfilGateway 
+{
+    private $tableGateway;
+    
+    public function __construct(TableGateway $tableGateway) {
+        
+        $this->tableGateway = $tableGateway;
+        
+    }
+    
+    public function fetchProfil($shopId)
+    {
+        return $this->tableGateway->select(array('boutique_id' => 'Shop-A'));
+    }
 }

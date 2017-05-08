@@ -45,6 +45,7 @@ return array(
                 'type' => 'Segment',
                 'options' => array(
                     'route'    => '/profil',
+                    //'verb' => 'GET,PUT',
                     'defaults' => array(
                         'controller' => 'Shop\Profil\Profil',
                         'action' => 'index'
@@ -61,6 +62,9 @@ return array(
             
             'Shop\Stock\Service\StockService' 
                         => 'Shop\Stock\Service\StockServiceFactory',
+            
+            'Shop\Profil\Model\ProfilGateway'
+                        => 'Shop\Profil\Model\ProfilGatewayFactory'
             
         )
     ),

@@ -1,6 +1,6 @@
 <?php
 
-namespace Shop\Model\Entity;
+namespace Shop\Stock\Model;
 
 class StockEntity
 {

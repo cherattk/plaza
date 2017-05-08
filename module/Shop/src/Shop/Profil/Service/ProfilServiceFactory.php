@@ -8,12 +8,8 @@ class ProfilServiceFactory
 {
     public function __invoke($s_locator)
     {
-        /*
-        $gateway = $s_locator->get('Shop\Model\Gateway\StockGateway');
-        return new StockService($gateway);
-         * 
-         */
+        $gateway = $s_locator->get('Shop\Model\Profil\ProfilGateway');
         
-        return new ProfilService();
+        return new ProfilService($gateway);
     }
 }

@@ -9,18 +9,11 @@ class IndexController extends AbstractActionController
 {    
     private $identity = null;
     
-    public function __construct(){}
-    
-    
-    public function onDispatch(\Zend\Mvc\MvcEvent $e)
-    {
-        parent::onDispatch($e);
-    }
+    public function __construct(){}    
     
     public function setIdentity($identity)
     {
-        $this->identity = $identity; 
-        
+        $this->identity = $identity;
     }
     
     public function homeAction()

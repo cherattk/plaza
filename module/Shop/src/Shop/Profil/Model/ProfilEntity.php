@@ -1,12 +1,16 @@
 <?php
 
-namespace Profil\Model;
+namespace Shop\Profil\Model;
 
-/**
- * Description of ProfilEntity
- *
- * @author rimka
- */
-class ProfilEntity {
-    //put your code here
+
+class ProfilEntity
+{
+    public $id; 
+    public $name;
+    
+    public function exchangeArray($data)
+    {
+        $this->id   = (!empty($data['boutique_id'])) ? $data['boutique_id'] : null;
+        $this->name = (!empty($data['boutique_nom'])) ? $data['boutique_nom'] : null;
+    }
 }

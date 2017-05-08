@@ -4,8 +4,24 @@ namespace Shop\Profil\Service;
 
 class ProfilService
 {
-    public function getProfil()
+    private $profilGateway;
+    
+    public function __construct($profilGateway) {
+        $this->profilGateway = $profilGateway;
+    }
+    
+    public function shopIdentifier($public_id)
     {
+        $id = $public_id;
+        return $id;
+    }
+    
+    public function getProfil($id)
+    {
+        $id = $this->shopIdentifier($id);
+        
+        $this->profilGateway->fetchProfil($id);
+                
         $contact = [
             "address" => "123 rue machin" ,
             "city" => "Montreal" ,

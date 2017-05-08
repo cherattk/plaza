@@ -1,6 +1,6 @@
 <?php
 
-namespace Shop\Model\Gateway;
+namespace Shop\Stock\Model;
 
 use Zend\Db\TableGateway\TableGateway;
 
