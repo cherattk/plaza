@@ -7,21 +7,26 @@ use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 use Shop\Stock\StockController;
 
 class StokControllerTest extends AbstractHttpControllerTestCase
-{    
-    private $mockStockService;
+{
+    public static $config;
+    
+    public $mockStockService;
+    
+    public static function setUpBeforeClass()
+    {        
+        self::$config = include __DIR__ . '/../config.test.php';
+    }
     
     public function setUp()
     {        
-        $config = include __DIR__ . '/../config.test.php';
-        
-        $this->setApplicationConfig($config);
-        
         $this->traceError = true;
-        $this->mockStockService = $this->getMockBuilder('Shop\Stock\Service\StockService')
-                                    ->disableOriginalConstructor()
-                                    ->getMock();
         
-        parent::setUp();
+        $this->setApplicationConfig(self::$config);        
+        
+        $this->mockStockService = $this->getMockBuilder('Shop\Stock\Service\StockService')
+                                        ->disableOriginalConstructor()
+                                        ->getMock();
+        
     }
     
     
@@ -34,6 +39,7 @@ class StokControllerTest extends AbstractHttpControllerTestCase
         $this->assertResponseStatusCode(405);
     }
     
+    /** Data Test **/
     public function dataForTestMethodNotAllowed()
     {
         return [
@@ -46,40 +52,53 @@ class StokControllerTest extends AbstractHttpControllerTestCase
      */
     public function testIndexActionCalled($httpMethod)
     {        
-        $this->dispatch('/stock', $httpMethod);        
+        $this->dispatch('/stock' , $httpMethod);
         $this->assertResponseStatusCode(200);
         $this->assertControllerName('Shop\Stock\Stock');
         $this->assertActionName('index');
-        
     }
     
     public function dataForTestIndexActionCalled()
     {
-        return [ 
-            ['GET'], ['POST'], ['PUT'], ['DELETE']
-        ];
+        return [ ['GET'], ['POST'], ['PUT'], ['DELETE'] ];
     }
     
     
-    
-    public function testIndexActionReturnZendJsonModel()
-    {        
+    public function getStockController()
+    {
         $mockStockService = $this->mockStockService;
         
-        $zendPluginParamsMock = $this->getMockBuilder('Zend\Mvc\Controller\Plugin\Params')
-                    ->setMethods(['fromRoute'])
-                    ->getMock();
+        $mockZendPluginParam = $this->getMockBuilder('Zend\Mvc\Controller\Plugin\Params')
+                                    ->setMethods(['fromRoute'])
+                                    ->getMock();
         
         $ctrl = new StockController($mockStockService);
         
-        $ctrl->getPluginManager()->setService('params', $zendPluginParamsMock);
+        $ctrl->getPluginManager()->setService('params', $mockZendPluginParam);
+        
+        return $ctrl;
+    }
+    
+    
+    /**
+     * 
+     * @dataProvider dataForTestIndexActionResult()
+     */
+    public function testIndexActionResult($method)
+    {
+        $ctrl = $this->getStockController();
+        
+        $ctrl->getRequest()->setMethod($method);
         
         $result = $ctrl->indexAction();
         
         $this->assertInstanceOf('Zend\View\Model\JsonModel' , $result);
     }
     
-    
+    public function dataForTestIndexActionResult()
+    {
+        return [ ['GET'], ['POST'], ['PUT'], ['DELETE'] ];
+    }
     
     /**
      * @dataProvider dataForTestProcessItem()
@@ -90,16 +109,17 @@ class StokControllerTest extends AbstractHttpControllerTestCase
         
         $ctrl = new StockController($mockStockService);
         
-        $result = $ctrl->processItem(1 , $httpMethod);
+        $result = $ctrl->processItem($id = 1 , $httpMethod);
         
-        $this->assertInstanceOf('Zend\View\Model\JsonModel' , $result);
+        $this->assertTrue(is_array($result));
+        
+        $this->assertArrayHasKey('item' , $result);
     }
     
     public function dataForTestProcessItem()
     {
         return [
-            'get item' => ['GET'] , 
-            'create item' => ['POST'] , 
+            'get item' => ['GET'] ,
             'update item' => ['PUT'] ,
             'delete item' => ['DELETE']
         ];

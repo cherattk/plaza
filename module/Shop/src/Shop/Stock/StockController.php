@@ -25,6 +25,8 @@ class StockController extends AbstractActionController
      */
     public function indexAction()
     {        
+        $response = ['message' => 'index action : method not allowed'] ;
+        
         $id = $this->params()->fromRoute('id');
         $requestMethod = $this->getRequest()->getMethod();
         
@@ -33,64 +35,98 @@ class StockController extends AbstractActionController
         }
         else if($requestMethod === "GET"){
             
-            $queryParam = $filter = $this->params()->fromQuery();
-            $response = $this->searchInStock($queryParam);
+            $filter = $this->params()->fromQuery();
+            $response = $this->search($filter);
             
-        }else{
-            $response = new JsonModel(['message' => 'bad request']);
+        }
+        else if($requestMethod === "POST"){
+            
+            $response = $this->createItem();
         }
         
-        return $response;        
+        return new JsonModel($response);
     }
-    
-    
-    /**
-     * @param array $filter
-     * @return JsonModel
-     */
-    public function searchInStock($filter)
-    {        
-        $list = $this->getStockService()->fetchList();
-        
-        return new JsonModel([
-            'list' => $list
-        ]);
-        
-    }
-    
     
     /**
      * @param string $id , item identifier
      * @param string $method , request method
      * 
-     * @return JsonModel
+     * @return Array
      */
     public function processItem($id , $method)
     {        
         switch ($method) {
             case 'GET' :
-                $item = $this->getStockService()->fetchItem($id);
-                $response = ['item' => $item];
-                break;
-            
-            case 'POST' :
-                $response = $this->getStockService()->createItem();
+                $response = $this->getItem($id);
                 break;
             
             case 'PUT' :
-                $response = $this->getStockService()->updateItem($id);
+                $response = $this->updateItem($id);
                 break;
             
             case 'DELETE' :
-                $response = $this->getStockService()->deleteItem($id);
+                $response = $this->deleteItem($id);
                 break;
             
             default:
-                $response = ['message' => 'method-not-allowed'];
+                $response = ['message' => 'process item : method-not-allowed'];
                 break;
         }
         
-        return new JsonModel($response);
+        return $response;
     }    
     
+    /**
+     * @param array $filter
+     * @return array
+     */
+    public function search($filter)
+    {        
+        $list = $this->getStockService()->selectList();        
+        return [ 'list' => $list ];
+        
+    }
+    
+    /**
+     * 
+     * @return array
+     */
+    public function createItem()
+    {
+        $item = $this->getStockService()->insert();
+        return ['item' => $item];
+    }
+    
+    /**
+     * 
+     * @param string $id
+     * @return array
+     */
+    public function getItem($id)
+    {
+        $item = $this->getStockService()->select($id);
+        return ['item' => $item];
+    }
+    
+    /**
+     * 
+     * @param string $id
+     * @return array
+     */
+    public function updateItem($id)
+    {
+        $item = $this->getStockService()->update($id);
+        return ['item' => $item];
+    }
+    
+    /**
+     * 
+     * @param string $id
+     * @return array
+     */
+    public function deleteItem($id)
+    {
+        $item = $this->getStockService()->delete($id);
+        return ['item' => $item];
+    }
 }

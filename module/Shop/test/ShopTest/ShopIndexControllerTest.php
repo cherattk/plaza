@@ -6,16 +6,18 @@ use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 
 class ShopIndexControllerTest extends AbstractHttpControllerTestCase
 {
-
+    public static $config;
+    
+    public static function setUpBeforeClass(){        
+        
+        self::$config = include __DIR__ . '/config.test.php';
+    }
+    
     public function setUp() {
         
-        $config = include __DIR__ . '/config.test.php';
-
-        $this->setApplicationConfig($config);
+        $this->setApplicationConfig(self::$config);
 
         $this->traceError = true;
-
-        parent::setUp();
     }
 
     

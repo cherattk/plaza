@@ -8,18 +8,23 @@ use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 
 class ProfilControllerTest extends AbstractHttpControllerTestCase
 {
+    public static $config;
+    
+    public static function setUpBeforeClass(){
+        
+        self::$config = include __DIR__ . '/../config.test.php';
+    }
+    
     public function setUp()
     {
-        $config = include __DIR__ . '/../config.test.php';
-
-        $this->setApplicationConfig($config);
-
         $this->traceError = true;
+        
+        $this->setApplicationConfig(self::$config);
+        
         $this->mockProfilService = $this->getMockBuilder('Shop\Profil\Service\ProfilService')
                                         ->disableOriginalConstructor()
                                         ->getMock();
 
-        parent::setUp();
     }
     
     
@@ -59,25 +64,4 @@ class ProfilControllerTest extends AbstractHttpControllerTestCase
         $this->assertArrayHasKey('user' , $response);
         
     }
-    
-    public function testGetProfilResult()
-    {
-        $this->assertTrue(is_array($response['user']) , 'user key content ' . gettype($response['user']));
-        
-        $this->assertArraySubSet(array(
-            array(
-            'key-1',
-            'key-2',
-            'key-3',
-        )
-        ) , array(
-            'key-1' => '',
-            'key-2' => '',
-            'key-3' => '',
-        ));
-    }
-    
-    
-    
-    
 }

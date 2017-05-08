@@ -5,17 +5,24 @@ namespace ShopTest\Profil;
 use Shop\Profil\Service\ProfilService;
 
 class ProfilServiceTest extends \PHPUnit\Framework\TestCase
-{
+{    
+    public static $config;
     
-    private $mockProfilGateway;
+    public $mockProfilGateway;
+    
+    public static function setUpBeforeClass(){        
+        
+        self::$config = include __DIR__ . '/../config.test.php';
+    }
+    
     
     public function setUp()
     {
         $this->traceError = true;
         
         $this->mockProfilGateway = $this->getMockBuilder('Shop\Profil\Model\ProfilGateway')
-                ->disableOriginalConstructor()
-                ->getMock();
+                                        ->disableOriginalConstructor()
+                                        ->getMock();
     }
     
     public function testGetProfil()

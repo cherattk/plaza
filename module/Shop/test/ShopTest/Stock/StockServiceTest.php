@@ -5,16 +5,16 @@ namespace ShopTest\Stock;
 use Shop\Stock\Service\StockService;
 
 class StockServiceTest extends \PHPUnit\Framework\TestCase
-{
-
+{    
     private $mockServiceGateway;
 
     public function setUp() {
+        
         $this->traceError = true;
 
         $this->mockServiceGateway = $this->getMockBuilder('Shop\Stock\Model\StockGateway')
-                ->disableOriginalConstructor()
-                ->getMock();
+                                         ->disableOriginalConstructor()
+                                         ->getMock();
     }
 
     public function testFetchItem() {

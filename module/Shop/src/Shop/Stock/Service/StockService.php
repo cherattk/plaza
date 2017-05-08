@@ -12,7 +12,7 @@ class StockService
      * @param string $id
      * @return array item's data
      */
-    public function fetchItem($id)
+    public function select($id)
     {
         $productId = "1234";
         $item = [
@@ -40,7 +40,7 @@ class StockService
      * @param integer $range
      * @return array[] list of item
      */
-    public function fetchList($filter = null, $range = 0) 
+    public function selectList($filter = null, $range = 0) 
     {
         // DUMMY DATA: PRODUCT LIST //
         $productId = "1234";
@@ -59,7 +59,7 @@ class StockService
         return $stock;
     }
     
-    public function createItem()
+    public function insert()
     {
         $productId = "1234";
         $item = [
@@ -80,12 +80,12 @@ class StockService
         return $item;
     }
     
-    public function updateItem($id)
+    public function update($id)
     {
         
     }
     
-    public function deleteItem($id)
+    public function delete($id)
     {
         
     }

@@ -11,14 +11,18 @@ use Zend\Test\PHPUnit\Controller\AbstractControllerTestCase;
 
 class ProfilGatewayTest extends AbstractControllerTestCase
 {
+    public static $config;
+    
+    public static function setUpBeforeClass(){        
+        
+        self::$config = include __DIR__ . '/../config.test.php';
+    }
     
     public function setUp()
     {
         $this->traceError = true;
         
-        $config = include __DIR__ . '/../config.test.php';
-        
-        $this->setApplicationConfig($config);
+        $this->setApplicationConfig(self::$config);
     }
     
     public function testFetchProfil()
