@@ -5,6 +5,9 @@ namespace Shop\Profil\Model;
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Db\ResultSet\ResultSet;
 
+use Shop\Profil\Model\ProfilEntity;
+use Shop\Profil\Model\ProfilGateway;
+
 class ProfilGatewayFactory
 {
     private static $TAB_NAME = 'shop';
@@ -14,9 +17,9 @@ class ProfilGatewayFactory
         $dbAdapter = $s_locator->get('Zend\Db\Adapter\Adapter');
         
         $resultPrototype = new ResultSet();
-        $resultPrototype->setArrayObjectPrototype(new Model\ProfilEntity());
+        $resultPrototype->setArrayObjectPrototype(new ProfilEntity());
         
         $tableGateway = new TableGateway(self::$TAB_NAME, $dbAdapter, null, $resultPrototype);
-        return new Model\ProfilGateway($tableGateway);
+        return new ProfilGateway($tableGateway);
     }
 }

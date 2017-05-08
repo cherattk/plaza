@@ -2,15 +2,14 @@
 
 namespace ShopTest\Profil;
 
-use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
-
-
 use Shop\Profil\ProfilController;
+
+use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 
 class ProfilControllerTest extends AbstractHttpControllerTestCase
 {
-
-    public function setUp() {
+    public function setUp()
+    {
         $config = include __DIR__ . '/../config.test.php';
 
         $this->setApplicationConfig($config);
@@ -35,10 +34,7 @@ class ProfilControllerTest extends AbstractHttpControllerTestCase
     
     public function dataForTestIndexAction()
     {
-       return [ 
-            ['GET'],
-            ['PUT']
-        ];
+       return [ ['GET'], ['PUT']  ];
     }
     
     

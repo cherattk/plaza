@@ -5,6 +5,9 @@ namespace Shop\Stock\Model;
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Db\ResultSet\ResultSet;
 
+use Shop\Stock\Model\StockEntity;
+use Shop\Stock\Model\StockGateway;
+
 class StockGatewayFactory
 {
     private static $TAB_NAME = 'stock';
@@ -13,9 +16,9 @@ class StockGatewayFactory
     {
         $dbAdapter = $s_locator->get('Zend\Db\Adapter\Adapter');
         $resultPrototype = new ResultSet();
-        $resultPrototype->setArrayObjectPrototype(new Model\StockEntity());
+        $resultPrototype->setArrayObjectPrototype(new StockEntity());
         
         $tableGateway = new TableGateway(self::$TAB_NAME, $dbAdapter, null, $resultPrototype);
-        return new Model\StockGateway($tableGateway);
+        return new StockGateway($tableGateway);
     }
 }

@@ -42,10 +42,9 @@ return array(
             
             //--------------  API PROFIL --------------------//
             'profil' => array(
-                'type' => 'Segment',
+                'type' => 'Literal',
                 'options' => array(
                     'route'    => '/profil',
-                    //'verb' => 'GET,PUT',
                     'defaults' => array(
                         'controller' => 'Shop\Profil\Profil',
                         'action' => 'index'
@@ -54,17 +53,22 @@ return array(
             ),
         ),
     ),
+    
     'service_manager' => array(
         
         'factories' => array(
+            
+            /// Profil factory
             'Shop\Profil\Service\ProfilService' 
                         => 'Shop\Profil\Service\ProfilServiceFactory',
             
+            'Shop\Profil\Model\ProfilGateway'
+                        => 'Shop\Profil\Model\ProfilGatewayFactory',
+            
+            
+            // Stock factory            
             'Shop\Stock\Service\StockService' 
                         => 'Shop\Stock\Service\StockServiceFactory',
-            
-            'Shop\Profil\Model\ProfilGateway'
-                        => 'Shop\Profil\Model\ProfilGatewayFactory'
             
         )
     ),
