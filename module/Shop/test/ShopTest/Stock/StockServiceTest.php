@@ -17,15 +17,15 @@ class StockServiceTest extends \PHPUnit\Framework\TestCase
                                          ->getMock();
     }
 
-    public function testFetchItem() {
+    public function testSelectItem() {
         
         $service = new StockService($this->mockServiceGateway);
 
-        $result = $service->fetchItem(1);
+        $result = $service->select($id = 1);
 
         $this->assertTrue(is_array($result));
 
-        $this->assertCount(8, $result);
+        //$this->assertCount(8, $result);
 
         //$this->assertArrayHasKey("key", $result);
     }
