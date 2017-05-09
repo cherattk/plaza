@@ -2,8 +2,6 @@
 
 namespace ShopTest\Profil;
 
-use Shop\Profil\ProfilController;
-
 use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 
 class ProfilControllerTest extends AbstractHttpControllerTestCase
@@ -28,40 +26,19 @@ class ProfilControllerTest extends AbstractHttpControllerTestCase
     }
     
     
-    /**
-     * @dataProvider dataForTestIndexAction()
-     */
-    public function testIndexAction($httpMethod)
+    public function testGetProfil()
     {
-        $this->dispatch('/profil', $httpMethod);        
+        $this->dispatch('/profil', 'GET');        
         $this->assertResponseStatusCode(200);
-    }
-    
-    public function dataForTestIndexAction()
-    {
-       return [ ['GET'], ['PUT']  ];
-    }
-    
-    
-    public function testMethodNotAllowed()
-    {
-        $this->dispatch('/profil', 'PATCH');        
-        $this->assertResponseStatusCode(405);
+        $this->assertControllerName('Shop\Profil\Profil');
+        $this->assertActionName('index');
+        
+        $content = $this->getResponse()->getContent();
+        
+        $expectedResult = '{"profil" : ""}';
+        
+        $this->assertJsonStringEqualsJsonString($content , $expectedResult);
     }
     
     
-    public function testIndexMethod()
-    {
-        $controller  = new ProfilController($this->mockProfilService);
-        $result = $controller->indexAction();
-        
-        $this->assertInstanceOf('Zend\View\Model\JsonModel' , $result);
-        
-        $response = $result->getVariables();
-        
-        $this->assertTrue(is_array($response) , 'response is ' . gettype($response));
-        
-        $this->assertArrayHasKey('user' , $response);
-        
-    }
 }

@@ -4,124 +4,157 @@ namespace ShopTest\Stock;
 
 use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 
-use Shop\Stock\StockController;
+//use Shop\Stock\StockController;
 
 class StokControllerTest extends AbstractHttpControllerTestCase
 {
-    public static $config;
+    public static $testConfig;
     
     public $mockStockService;
     
     public static function setUpBeforeClass()
     {        
-        self::$config = include __DIR__ . '/../config.test.php';
+        self::$testConfig = include __DIR__ . '/../config.test.php';
     }
     
     public function setUp()
     {        
         $this->traceError = true;
         
-        $this->setApplicationConfig(self::$config);        
+        $this->setApplicationConfig(self::$testConfig);        
         
         $this->mockStockService = $this->getMockBuilder('Shop\Stock\Service\StockService')
                                         ->disableOriginalConstructor()
+                                        ->setMethods([
+                                            'select',
+                                            'selectList',
+                                            'insert',
+                                            'update',
+                                            'delete'
+                                        ])
                                         ->getMock();
+        
+        
+        
         
     }
     
-    
-    /**
-     * @dataProvider dataForTestMethodNotAllowed()
-     */
-    public function testMethodNotAllowed($httpMethod)
+    public function setMockService()
     {
-        $this->dispatch('/stock', $httpMethod);
-        $this->assertResponseStatusCode(405);
+        $serviceManager = $this->getApplicationServiceLocator();
+        $serviceManager->setAllowOverride(true);
+        $serviceManager->setService('Shop\Stock\Service\StockService', 
+                                    $this->mockStockService);
     }
     
-    /** Data Test **/
-    public function dataForTestMethodNotAllowed()
+    public function testCreateItem()
     {
-        return [
-            ['PATCH'] , ['TRACE'] , ['OPTIONS'] , ['CONNECT'] , ['HEAD']
-        ];
-    }
-    
-    /**
-     * @dataProvider dataForTestIndexActionCalled()
-     */
-    public function testIndexActionCalled($httpMethod)
-    {        
-        $this->dispatch('/stock' , $httpMethod);
+        $this->mockStockService->expects($this->once())
+                                ->method('insert')
+                                ->willReturn('item-data');
+        
+        $this->setMockService();
+        
+        $this->dispatch('/stock' , 'POST');
         $this->assertResponseStatusCode(200);
         $this->assertControllerName('Shop\Stock\Stock');
         $this->assertActionName('index');
+        
+        $content = $this->getResponse()->getContent();
+        
+        $expectedResult = '{"item" : "item-data"}';
+        
+        $this->assertJsonStringEqualsJsonString($content , $expectedResult);
+        
     }
     
-    public function dataForTestIndexActionCalled()
+    public function testGetListItem()
     {
-        return [ ['GET'], ['POST'], ['PUT'], ['DELETE'] ];
+        $this->mockStockService->expects($this->once())
+                                ->method('selectList')
+                                ->willReturn('item-data');
+        
+        $this->setMockService();
+        
+        $this->dispatch('/stock' , 'GET');
+        //$this->dispatch('/stock?filter=param' , 'GET');
+        $this->assertResponseStatusCode(200);
+        $this->assertControllerName('Shop\Stock\Stock');
+        $this->assertActionName('index');
+        
+        $content = $this->getResponse()->getContent();
+        
+        $expectedResult = '{"list" : "item-data"}';
+        
+        $this->assertJsonStringEqualsJsonString($content , $expectedResult);
+        
     }
     
-    
-    public function getStockController()
+    public function testGetItem()
     {
-        $mockStockService = $this->mockStockService;
+        $this->mockStockService->expects($this->once())
+                                ->method('select')
+                                ->willReturn('item-data');
         
-        $mockZendPluginParam = $this->getMockBuilder('Zend\Mvc\Controller\Plugin\Params')
-                                    ->setMethods(['fromRoute'])
-                                    ->getMock();
+        $this->setMockService();
         
-        $ctrl = new StockController($mockStockService);
+        $this->dispatch('/stock/1234' , 'GET');
+        $this->assertResponseStatusCode(200);
+        $this->assertControllerName('Shop\Stock\Stock');
+        $this->assertActionName('index');
         
-        $ctrl->getPluginManager()->setService('params', $mockZendPluginParam);
+        $content = $this->getResponse()->getContent();
         
-        return $ctrl;
+        $expectedResult = '{"item" : "item-data"}';
+        
+        $this->assertJsonStringEqualsJsonString($content , $expectedResult);
+        
     }
     
-    
-    /**
-     * 
-     * @dataProvider dataForTestIndexActionResult()
-     */
-    public function testIndexActionResult($method)
+    public function testUpdateItem()
     {
-        $ctrl = $this->getStockController();
+        $this->mockStockService->expects($this->once())
+                                ->method('update')
+                                ->willReturn('updated-data');
         
-        $ctrl->getRequest()->setMethod($method);
+        $this->setMockService();
         
-        $result = $ctrl->indexAction();
+        $this->dispatch('/stock/1234' , 'PUT');
+        $this->assertResponseStatusCode(200);
+        $this->assertControllerName('Shop\Stock\Stock');
+        $this->assertActionName('index');
         
-        $this->assertInstanceOf('Zend\View\Model\JsonModel' , $result);
+        $content = $this->getResponse()->getContent();
+        
+        $expectedResult = '{"item" : "updated-data"}';
+        
+        $this->assertJsonStringEqualsJsonString($content , $expectedResult);
+        
     }
     
-    public function dataForTestIndexActionResult()
+    public function testDeleteItem()
     {
-        return [ ['GET'], ['POST'], ['PUT'], ['DELETE'] ];
+        $itemId = "1234";
+        
+        $this->mockStockService->expects($this->once())
+                                ->method('delete')
+                                ->with($this->equalTo($itemId))
+                                //->willReturn('deleted-item-id');
+                                ->will($this->returnArgument(0));
+        
+        $this->setMockService();
+        
+        $this->dispatch('/stock/' . $itemId , 'DELETE');
+        $this->assertResponseStatusCode(200);
+        $this->assertControllerName('Shop\Stock\Stock');
+        $this->assertActionName('index');
+        
+        $content = $this->getResponse()->getContent();
+        
+        $expectedResult = '{"message" : "deleted-item" , "id" : "'. $itemId .'"}';
+        
+        $this->assertJsonStringEqualsJsonString($content , $expectedResult);
+        
     }
     
-    /**
-     * @dataProvider dataForTestProcessItem()
-     */    
-    public function testProcessItem($httpMethod)
-    {
-        $mockStockService = $this->mockStockService;
-        
-        $ctrl = new StockController($mockStockService);
-        
-        $result = $ctrl->processItem($id = 1 , $httpMethod);
-        
-        $this->assertTrue(is_array($result));
-        
-        $this->assertArrayHasKey('item' , $result);
-    }
-    
-    public function dataForTestProcessItem()
-    {
-        return [
-            'get item' => ['GET'] ,
-            'update item' => ['PUT'] ,
-            'delete item' => ['DELETE']
-        ];
-    }
 }

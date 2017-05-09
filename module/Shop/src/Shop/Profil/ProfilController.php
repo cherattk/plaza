@@ -21,9 +21,7 @@ class ProfilController extends AbstractActionController
     
     public function indexAction()
     {        
-        //$result = $this->getProfilService();
-        
-        return new JsonModel(['user' => '']);
+        return new JsonModel(['profil' => '']);
     }    
     
 }

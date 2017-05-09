@@ -41,7 +41,8 @@ class StockController extends AbstractActionController
         }
         else if($requestMethod === "POST"){
             
-            $response = $this->createItem();
+            $data = $this->params()->fromPost();
+            $response = $this->createItem($data);
         }
         
         return new JsonModel($response);
@@ -126,7 +127,8 @@ class StockController extends AbstractActionController
      */
     public function deleteItem($id)
     {
-        $item = $this->getStockService()->delete($id);
-        return ['item' => $item];
+        $deletedItemId = $this->getStockService()->delete($id);
+        
+        return ['message' => 'deleted-item' , 'id' => $deletedItemId];
     }
 }
