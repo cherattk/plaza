@@ -3,10 +3,16 @@ Ecommerce plateform based on ZF2 MVC layer and module systems.
 
 ## Usage with ZendSkeletonApplication for ZF2
 
+### Required
+- pdo extension must be enabled in php.ini
+- php-version > php-5.3
+
+===========================================================================
+
 1 - Make a fresh installation of 
     [ZendSkeletonApplication 2.4](https://github.com/zendframework/ZendSkeletonApplication/blob/release-2.4/README.md) 
 
-2 - A) - Dowload /plaza-dev/ and Copy the content of /plaza-dev/module/* and  /plaza-dev/public/* in /module/ and /public/ folders of the skeleton
+2 - Dowload /plaza-dev/ and Copy the content of /module/ and /public/ folder in /module/ and /public/ folders of the skeleton
 
 ##### 3 - add to config/application.config.php
 
@@ -18,10 +24,10 @@ Ecommerce plateform based on ZF2 MVC layer and module systems.
 ##### 4 - add to public/index.php
 
 ``` php
-// require 'init_autoloader.php'
+ 
+require 'init_autoloader.php /** Code to add after this line **/ 
 
-/*************************************************************
-* Code to add
+/***********************************************************
 * this will attach appropriate module depending on subdomain
 * ex :
 * www.hostname.com to access Default Module Vitrine
@@ -68,6 +74,13 @@ return array(
      ),
 );
 ```
+
+### Test with built-in php server
+```bash
+$ cd path/to/ZendSkeletonRoot/public
+$ php -S localhost:1234
+```
+
 ##### Screenshot of Shop Page 
 ![Shop Page](/screenshot/plaza-shop.png?raw=true "Shop Page")
 
